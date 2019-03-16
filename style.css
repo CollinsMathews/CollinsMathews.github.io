@@ -17,23 +17,23 @@ td.shift_cell {
 }
 
 td.heat1 {
-  background-color: #ffd131 !important;
+  background-color: rgb(255, 234, 177) !important;
 }
 
 td.heat2 {
-  background-color: #FF5733 !important;
+  background-color: #ffd131 !important;
 }
 
 td.heat3 {
-  background-color: #C70039 !important;
+  background-color: #ff7d31 !important;
 }
 
 td.heat4 {
-  background-color: #900C3F !important;
+  background-color: #ff5a31 !important;
 }
 
 td.heat5 {
-  background-color: #581845 !important;
+  background-color: #97382b !important;
 }
 
 td.shift_cell:hover {
