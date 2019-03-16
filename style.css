@@ -149,6 +149,20 @@ h1 {
 }
 
 
+h3 {
+  color: white;
+  font-family: "cabin", sans-serif;
+  font-size: 2em;
+}
+
+h4 {
+  color: white;
+  font-family: "cabin", sans-serif;
+  font-size: 1em;
+  margin-top: 100px;
+}
+
+
 button#prefer_io_button {
   color: #373737;
   font-family: "cabin", sans-serif !important;
