@@ -6,6 +6,23 @@ var test = [[0, 0.2, 0.3, 0.1],
 
 var matrix = onRetrieve(); 
 
+function heatmap(A) {
+        var n = A.length;
+        var heat = []
+        for (var i = 0; i < n; i++) {
+                heat.push(0);
+                for (var j = 0; j < n; j++) {
+                        heat[i] += A[i][j]
+                }
+        }
+        return heat
+}
+
+var matrix = [[1, 2, 3],
+              [1, 2, 3],
+              [1, 2, 3]];
+var matrix = pref_array;
+
 min_matrix = matrix.map(value => value.map(value => -value));
 
 /**
