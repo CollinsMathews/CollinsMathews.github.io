@@ -45,9 +45,8 @@ firebase.initializeApp(config);
 //var name_array = [];
 var shift_assignments = [];
 
-function _onRetrieve() {
+function onRetrieve() {
   var pref_array = [];
-  var heat_array = [];
   var names = [];
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
     console.log(user_shift_data_object.val());
@@ -64,21 +63,27 @@ function _onRetrieve() {
     displayShifts(pref_array, names);
 
     var heat_array_aux = [];
-    for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-      heat_array_aux.push(Number(employee_shift_pref.shift_data[i].credits));
+    for (var k = 0; k< days_of_week.length*shift_times.length; k++){
+      heat_array_aux.push(Number(employee_shift_pref.shift_data[k].credits))
     }
     heat_array.push(heat_array_aux);
 
   });
-  return([pref_array, heat_array, names]) //works as expected
 }
 
-function onRetrieve(){
-  var retval = _onRetrieve()
-  return retval[1]
+function onHeatmap() {
+  var heat_array = [];
+  firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
+    console.log(user_shift_data_object.val());
+    var employee_shift_pref = user_shift_data_object.val();
+    var heat_array_aux = [];
+    for (var k = 0; k< days_of_week.length*shift_times.length; k++){
+      heat_array_aux.push(Number(employee_shift_pref.shift_data[k].credits))
+    }
+    heat_array.push(heat_array_aux);
+  });
+  return(displayHeat(heat_array)); // this does not work yet.
 }
-
-testvar = onRetrieve()
 
 function findShifts(my_array) {
   return( MunkresAlgorithm(my_array));
@@ -108,8 +113,6 @@ function displayHeat(my_array) {
   }
 }
 
-function findHeat(value, ) {
-}
 
 function random_array() {
   var my_array = [];
