@@ -14,35 +14,35 @@ td.shift_cell {
   padding: 5em;
 }
 
-heat1 {
+td.shift_cell#heat1 {
   width: 10%;
   height: 10%;
   background-color: #ffd131 !important;  
   padding: 5em;
 }
 
-heat2 {
+td.shift_cell#heat2 {
   width: 10%;
   height: 10%;
   background-color: #FF5733 !important;  
   padding: 5em;
 }
 
-heat3 {
+td.shift_cell#heat3 {
   width: 10%;
   height: 10%;
   background-color: #C70039   !important;  
   padding: 5em;
 }
 
-heat4 {
+td.shift_cell#heat4 {
   width: 10%;
   height: 10%;
   background-color: #900C3F   !important;  
   padding: 5em;
 }
 
-heat5 {
+td.shift_cell#heat5 {
   width: 10%;
   height: 10%;
   background-color: #581845  !important;  
