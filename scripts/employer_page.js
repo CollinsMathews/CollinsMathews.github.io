@@ -42,6 +42,7 @@ firebase.initializeApp(config);
 
 var pref_array = [];
 var name_array = [];
+var shift_assignments = [];
 
 function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
@@ -52,35 +53,33 @@ function onRetrieve() {
       for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
         templist.push(Number(employee_shift_pref.shift_data[i].credits));
       }
-      pref_array.push(templist);
-      name_array.push(employee_shift_pref.user);
-    }
-    displayShifts(pref_array);
+      findShifts(pref_array);
+      displayShifts(pref_array);
   });
 }
 
-var my_array = random_array();
+function findShifts(my_array) {
+  shift_assignments = MunkresAlgorithm(my_array);
+}
 
 function displayShifts(my_array) {
-  /*
-  var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
-                    "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
-                    "Billy", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff",
-                    "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
-                    */
-
-
-  var shift_assignments = MunkresAlgorithm(my_array);
-
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-    console.log(i);
     index = shift_assignments[i];
-    console.log(index);
     console.log("shift_cell" + String(index[1]));
     var cell = document.getElementById("shift_cell" + String(index[1]))
     var name = name_array[index[0]]
     var weighting = " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
     cell.innerHTML = name + weighting;
+  }
+}
+
+function displayHeat(my_array) {
+  var heat = heatmap(my_array);
+  for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+    index = shift_assignments[i];
+    console.log(i);
+    var cell = document.getElementById("shift_cell" + String(index[1]))
+    cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
   }
 }
 
