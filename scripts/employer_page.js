@@ -19,18 +19,8 @@ shift_table_string += '</tr></thead>';
 
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
-<<<<<<< HEAD
   for (var j = 0; j < days_of_week.length - 1; j++) {
     shift_table_string += '<td class="shift_cell">' + 'Testies' + '</td>';
-=======
-  for (var j = 0; j < days_of_week.length; j++) {
-    shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
-        <div class="mdl-textfield mdl-js-textfield">\
-        <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
-        <label class="mdl-textfield__label" for="sample2">Credits...</label>\
-        </div>\
-        </form>' + '</td>';
->>>>>>> 301de2efac9c859ee25da8cd01c9964adcfd38d8
   }
   shift_table_string += '</tr>';
 }
@@ -85,5 +75,5 @@ var shift_assignments = MunkresAlgorithm(my_array);
 var final_shifts = new Array(28);
 
 for (var i = 0; i < 28; i++) {
-  
+
 }
