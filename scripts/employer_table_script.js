@@ -50,6 +50,7 @@ firebase.initializeApp(config);
 
 function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function(user_shift_data_object) {
-    console.log(user_shift_data_object.key);
+    console.log(user_shift_data_object.val());
+    
 })
 }
