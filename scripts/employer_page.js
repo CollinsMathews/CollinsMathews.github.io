@@ -3,7 +3,7 @@ shift_table_string = '';
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
-var shift_times = ['8:00AM - 12:00PM', '10:00PM - 2:00PM', '12:00PM - 4:00PM', '2:00PM - 6:00PM'];
+var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
 
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length+1; i++) {
