@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</head>
+
+<body>
+    <div id="table_wrapper">
+        <div id="animated-example" class="animated fadeIn" onclick="myFunction()">
+            <span class="popuptext" id="myPopup"></span>
+        </div>
+        <div id="table_container">
+            <a href="index.html">
+                <button id="prefer_io_button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    prefer.io
+                </button>
+            </a>
+            <p class="creds_remaining"></p>
+
+            <table id="shift_table" class="mdl-data-table mdl-js-data-table mdl-data-table- mdl-shadow--2dp">
+            </table>
+        </div>
+    </div>
+    <div id="submit_button_container">
+        <button id="submit_button" onclick="onSubmit()"> SUBMIT</button>
+    </div>
+    <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+</body>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
