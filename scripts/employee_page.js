@@ -1,9 +1,11 @@
 shift_table_string = '';
+creds_remaining = 1000;
 
 
 var days_of_week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
 
+document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_remaining + " credits left.";
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
     if (i == 0) {
@@ -16,7 +18,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
       </form>' +
             '<form action="#" id="credit_input">\
       <div class="mdl-textfield mdl-js-textfield">\
-      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="no_of_shift">\
+      <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="no_of_shift">\
       <label class="mdl-textfield__label" for="no_of_shift">No of Shifts....</label>\
       </div>\
       </form>'
@@ -34,7 +36,7 @@ for (var i = 0; i < shift_times.length; i++) {
     for (var j = 0; j < days_of_week.length; j++) {
         shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
         <div class="mdl-textfield mdl-js-textfield">\
-        <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
+        <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" oninput="credChange()" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
         <label class="mdl-textfield__label" for="sample2">Credits...</label>\
         </div>\
         </form>' + '</td>';
@@ -114,3 +116,30 @@ function onSubmit() {
         firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
     }
 }
+
+function credChange() {
+    var sum = 0
+    for (var i = 0; i < days_of_week.length; i++) {
+        for (var j = 0; j < shift_times.length; j++) {
+            if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
+                sum += 0;
+            } else {
+                sum += Number(the_value);
+
+            }
+        }
+    }
+
+    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + (Number(creds_remaining) - Number(sum)) + " credits left.";
+}
+
+document.getElementById('numbersonly').addEventListener('keydown', function(e) {
+    var key   = e.keyCode ? e.keyCode : e.which;
+
+    if (!( [8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
+         (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+         (key >= 35 && key <= 40) ||
+         (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
+         (key >= 96 && key <= 105)
+       )) e.preventDefault();
+});
