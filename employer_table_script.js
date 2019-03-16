@@ -36,3 +36,22 @@ for (var i = 0; i < 4; i++) {
 
 
 document.getElementById('shift_table').innerHTML = shift_table_string;
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCllerIGsbDSRfbkXKBfQvMLnHqC_vUZwI",
+    authDomain: "prefers-12cd2.firebaseapp.com",
+    databaseURL: "https://prefers-12cd2.firebaseio.com",
+    projectId: "prefers-12cd2",
+    storageBucket: "prefers-12cd2.appspot.com",
+    messagingSenderId: "412064070833"
+};
+firebase.initializeApp(config);
+
+firebase.database().ref('User').orderByKey().on("child_added", function(user_shift_data_object) {
+    console.log(user_shift_data_object)
+})
+
+function onRetrieve() {
+
+}
