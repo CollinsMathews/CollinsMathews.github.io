@@ -128,10 +128,26 @@ div.mdl-textfield {
 
 div#submit_button_container {
   padding: 2% 40% 5% 40%;
-  vertical-align: center !important;
+  
   height: 100px;
   background-color: #e6e6e6;
 
+}
+
+
+button#heatmap_button {
+  margin-bottom: 20px;
+  width: 200px;
+  background-color: #ffd131;
+  border: none;
+  color: #373737;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-family: "cabin", sans-serif;
+  height: 50px;
+  
 }
 
 button#submit_button:hover {
@@ -227,7 +243,7 @@ button#submit_button {
   background-color: #ffd131;
   border: none;
   color: #373737;
-  margin: 70px 50px !important;
+  margin: 10px 0px !important;
   text-align: center;
   text-decoration: none;
   display: inline-block;
