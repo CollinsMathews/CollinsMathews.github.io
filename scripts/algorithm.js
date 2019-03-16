@@ -11,7 +11,7 @@ function heatmap(A) {
         for (var i = 0; i < n; i++) {
                 heat.push(0);
                 for (var j = 0; j < n; j++) {
-                        heat[i] += A[i][j]
+                        heat[i] += A[j][i];
                 }
         }
         return heat
