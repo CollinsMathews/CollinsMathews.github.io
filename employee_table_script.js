@@ -88,8 +88,4 @@ function onSubmit() {
     };
 
     firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
-    firebase.database().ref("User").orderByKey().on("child_added", function(snapshot) {
-        var a = console.log(snapshot.val());
-        b = 2+2;
-    });
 }
