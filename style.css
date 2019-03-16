@@ -251,10 +251,24 @@ button#submit_button {
 
 .mdl-textfield__input {
   color: black;
-  background-color: darkgray;
   text-align: center !important;
   font-size: 30px !important;
+}
 
+.mdl-textfield__label {
+  bottom: 0;
+  color: #373737;
+  font-size: 16px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 24px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
 }
 
 

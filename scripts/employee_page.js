@@ -49,7 +49,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
                 '<form action="#">\
         <div class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
-          <label class="mdl-textfield__label" for="name_input">' + 'Name...' + ' ...</label>\
+          <label class="mdl-textfield__label" for="name_input">' + 'Name?' + '</label>\
         </div>\
       </form>';
         }
@@ -57,7 +57,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
         shift_table_string += '<form action="#" id="credit_input">\
       <div class="mdl-textfield mdl-js-textfield">\
       <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="no_of_shift">\
-      <label class="mdl-textfield__label" for="no_of_shift">No of Shifts....</label>\
+      <label class="mdl-textfield__label" for="no_of_shift">Total Shifts This Week?</label>\
       </div>\
       </form>'
         '</th>';
