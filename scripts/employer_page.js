@@ -112,25 +112,48 @@ function displayShifts(my_array, name_array) {
   }
 }
 
+function maxList(my_array) {
+  var max = 0
+  for (var i = 0; i < my_array.length; i++) {
+    if (my_array[i] > max) {
+      max = my_array[i];
+    }
+  }
+  return max
+}
+
 function displayHeat(my_array) {
   var heat = heatmap(my_array);
-  max_heat = Math.max(heat);
+  var heat_N = [];
 
+  max_heat = maxList(heat);
+  //console.log(max_heat);
+  
   if (max_heat > 0) {
     for (var i = 0; i < heat.length; i++) {
-      heat[i] = Math.round(heat[i] / max_heat);
+      var val = heat[i]*5/max_heat;
+      console.log(val);
+      if (val == 0) {
+        heat_N.push(1);
+      } else {
+        if (val < 1.5) {
+          heat_N.push(2);
+        } else {
+          heat_N.push(Math.round(val));
+        }
+      }
     }
   }
 
-  console.log(heat);
+  console.log(heat_N);
 
 
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
     console.log(i);
     var cell = document.getElementById("shift_cell" + String(i))
-
-    //cell.className = "heat1"
-    cell.innerHTML = String(heat[i]);
+    
+    cell.className = "heat" + String(heat_N[i]);
+    cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
   }
 }
 
