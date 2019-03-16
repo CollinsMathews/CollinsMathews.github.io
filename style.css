@@ -273,3 +273,11 @@ input#no_of_shift.mdl-textfield__input {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
+
+html { 
+  background: url(images/background.jpg); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

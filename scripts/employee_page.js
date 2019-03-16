@@ -81,7 +81,7 @@ firebase.database().ref('User').orderByChild("user").equalTo(name).on("child_add
 for (var i = 0; i < shift_times.length; i++) {
     shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
     for (var j = 0; j < days_of_week.length; j++) {
-        shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
+        shift_table_string += '<td class="shift_cell" id="shift_cell_' + days_of_week[j] + '_' + shift_times[i] + '">' + '<form action="#" id="credit_input_' + days_of_week[j] + '_' + shift_times[i] + '">\
         <div class="mdl-textfield mdl-js-textfield">\
         <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input shift_cell" type="text" oninput="credChange(\'' + days_of_week[j] + '_' + shift_times[i] + '\')" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
         <label class="mdl-textfield__label" for="sample2">Credits...</label>\
@@ -199,10 +199,10 @@ function credChange(cell_id) {
         for (var j = 0; j < shift_times.length; j++) {
             if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
                 sum += 0;
-                document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#FFD131';
+                document.getElementById("shift_cell_" + days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#FFD131';
             } else {
                 sum += Number(the_value);
-                document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#00843D';
+                document.getElementById("shift_cell_" + days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#00843D';
 
             }
         }
@@ -217,10 +217,10 @@ function credChange(cell_id) {
             for (var j = 0; j < shift_times.length; j++) {
                 if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
                     sum += 0;
-                    document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#FFD131';
+                    document.getElementById("shift_cell_" + days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#FFD131';
                 } else {
                     sum += Number(the_value);
-                    document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#00843d';
+                    document.getElementById("shift_cell_" + days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#00843D';
                 }
             }
         }
