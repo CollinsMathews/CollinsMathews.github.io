@@ -16,11 +16,13 @@ for (var i = 0; i < days_of_week.length; i++) {
 
 shift_table_string += '</tr></thead>';
 
+var shift_id = 0;
 
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
   for (var j = 0; j < days_of_week.length - 1; j++) {
-    shift_table_string += '<td class="shift_cell">' + 'Testies' + '</td>';
+    shift_table_string += '<td class="shift_cell" id="shift_cell' + String(shift_id) + '">' + 'Testies' + '</td>';
+    shift_id += 1;
   }
   shift_table_string += '</tr>';
 }
@@ -75,5 +77,7 @@ var shift_assignments = MunkresAlgorithm(my_array);
 var final_shifts = new Array(28);
 
 for (var i = 0; i < 28; i++) {
-
+  index = shift_assignments[i];
+  document.getElementById("shift_cell" + String(index[1])).innerHTML = name_array[index[0]] + " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
+  final_shifts[index[1]] = index[0];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 }
