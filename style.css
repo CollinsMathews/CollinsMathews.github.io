@@ -34,8 +34,6 @@ th.days_cell {
   color: white;
   
 }
-.mdl-data-table tbody tr:hover {
-  background-color: red; }
 
 table#shift_table {
   width: 100%;
@@ -70,6 +68,33 @@ div#submit_button_container {
   background-color: #191919;
   
 }
+
+button#employee_button {
+
+  background-color: #fad420;
+
+}
+
+button#employer_button {
+  background-color: #fad420;
+}
+
+body#main_page_body {
+  background-color: #191919;
+  text-align: center;
+  
+}
+
+div#main_page_button_wrapper {
+  margin: 200px auto 10px;
+  display: inline-block;
+  vertical-align: center;
+}
+
+h1 {
+  color: #fad420;
+}
+
 
 button#submit_button {
   width: 100%;
