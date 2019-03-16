@@ -3,7 +3,17 @@ var test = [[0, 0.2, 0.3, 0.1],
         [0.1, 0.8, 0, 0.1],
         [0.6, 0.1, 0.2, 0.1]];
 
-        
+function heatmap(A) {
+        var n = A.length;
+        var heat = []
+        for (var i = 0; i < n; i++) {
+                heat.push(0);
+                for (var j = 0; j < n; j++) {
+                        heat[i] += A[i][j]
+                }
+        }
+        return heat
+}
 
 var matrix = [[1, 2, 3],
               [1, 2, 3],
