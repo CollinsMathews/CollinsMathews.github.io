@@ -56,30 +56,32 @@ function onRetrieve() {
         pref_array.push(templist);
         name_array.push(employee_shift_pref.user);
       }
-      MunkresAlgorithm(pref_array);
-      displayShifts();
   });
+  displayShifts(pref_array);
 }
 
+var my_array = random_array();
 
-
-function displayShifts() {
+function displayShifts(my_array) {
+  /*
   var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
                     "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
                     "Billy", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff",
                     "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
-  var my_array = random_array();
+                    */
+  
+  
   var shift_assignments = MunkresAlgorithm(my_array);
-  var final_shifts = new Array(28);
 
-  for (var i = 0; i < 28; i++) {
+  for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+    console.log(i);
     index = shift_assignments[i];
+    console.log(index);
     console.log("shift_cell" + String(index[1]));
     var cell = document.getElementById("shift_cell" + String(index[1]))
     var name = name_array[index[0]]
     var weighting = " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
-    cell.innerHTML = name + weighting;           
-    final_shifts[index[1]] = index[0]    ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    cell.innerHTML = name + weighting;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
   }
 }
 
