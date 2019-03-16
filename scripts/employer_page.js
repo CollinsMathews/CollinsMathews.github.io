@@ -15,7 +15,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
         </div>\
       </form>' + '</th>';
   } else {
-    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i] + '</th>';
+    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i - 1] + '</th>';
   }
 }
 
