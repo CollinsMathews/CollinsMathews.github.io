@@ -2,7 +2,7 @@ shift_table_string = '';
 creds_remaining = 1000;
 
 
-var days_of_week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
 
 document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_remaining + " credits left.";
@@ -133,7 +133,7 @@ function credChange() {
     document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + (Number(creds_remaining) - Number(sum)) + " credits left.";
 }
 
-document.getElementById('numbersonly').addEventListener('keydown', function(e) {
+document.getElementsByClassName('numbersonly').addEventListener('keydown', function(e) {
     var key   = e.keyCode ? e.keyCode : e.which;
 
     if (!( [8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
