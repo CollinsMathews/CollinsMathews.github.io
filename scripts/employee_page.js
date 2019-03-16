@@ -178,7 +178,7 @@ function onSubmit() {
             GoogleAuth.signOut().then(function () {
                 console.log('User signed out.');
             });
-            window.href('index.html');
+            window.location.href('index.html');
 
         }, 2000);
 
