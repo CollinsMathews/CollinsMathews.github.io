@@ -74,7 +74,7 @@ shift_table_string += '</tr></thead>';
 
 firebase.database().ref('User').orderByChild("user").equalTo(name).on("child_added", function (user_shift_data_object) {
     creds_init += user_shift_data_object.val().credits_remaining;
-    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_remaining + " credits left.";
+    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_init + " credits left.";
 });
 
 
