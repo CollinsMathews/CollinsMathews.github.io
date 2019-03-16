@@ -23,7 +23,7 @@ shift_table_string += '</tr></thead>';
 
 for (var i = 0; i < shift_times.length; i++) {
     shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
-    for (var j = 0; j < 7; j++) {
+    for (var j = 0; j < days_of_week.length - 1; j++) {
         shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
         <div class="mdl-textfield mdl-js-textfield">\
         <input id="' + days_of_week[j + 1] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
@@ -69,7 +69,7 @@ function onSubmit() {
             shift_array.push({
                 day: day_on,
                 shift_time: shift_time_on,
-                credits: credits_used
+                credits: Number(credits_used)
             });
         }
     }

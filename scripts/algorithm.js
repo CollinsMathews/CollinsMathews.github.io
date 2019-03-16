@@ -44,4 +44,6 @@ function MunkresAlgorithm(matrix) {
         }
 
         console.log('total cost:', total);
+
+        return indices;
 }
