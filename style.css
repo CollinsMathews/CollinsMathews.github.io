@@ -1,11 +1,14 @@
 td.shift_times_cell {
   text-align: center !important;
-  width: 20px;
+  width: 10%;
+  font-weight: 1000;
 }
 
 td.shift_cell {
   width: 10%;
   height: 10%;
+  border: 2px;
+  border-color: black;
 }
 
 th.days_cell {
@@ -19,6 +22,12 @@ table#shift_table {
 }
 
 div#table_container {
-  padding: 2% 20%;
+  padding: 2% 10%;
   height: 94vh;
+}
+
+th#days_cell {
+  text-align: center !important;
+  vertical-align: middle !important;
+  font-size:2em;
 }
