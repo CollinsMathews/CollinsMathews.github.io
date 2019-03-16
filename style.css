@@ -18,6 +18,16 @@ td.shift_cell:hover {
   background-color: #2d8a00;
 }
 
+.mdl-data-table tbody tr {
+  position: relative;
+  height: 48px;
+  transition-delay: 300s; 
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property:  background-color !important ; 
+}
+
+
+
 th.days_cell {
   text-align: center;
   width: 100%;
@@ -36,7 +46,7 @@ table#shift_table {
 
 }
 div#table_container {
-  padding: 10% 10% 0 10%;
+  padding: 5% 10% 0 10%;
   height: 80vh;
   background-color: #191919 !important;
 }
@@ -70,6 +80,6 @@ button#submit_button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 30px;
   font-family: "cabin", sans-serif;
 }
