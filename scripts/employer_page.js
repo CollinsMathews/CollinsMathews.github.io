@@ -82,7 +82,7 @@ function onHeatmap() {
     }
     heat_array.push(heat_array_aux);
   });
-  return(displayHeat(heat_array)); // this does not work yet.
+  return(heat_array); // this does not work yet.
 }
 
 function findShifts(my_array) {
@@ -102,13 +102,11 @@ function displayShifts(my_array, name_array) {
 
 function displayHeat(my_array) {
   var heat = heatmap(my_array);
-  var heat_5 = []
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-    index = shift_assignments[i];
     console.log(i);
-    var cell = document.getElementById("shift_cell" + String(index[1]))
+    var cell = document.getElementById("shift_cell" + String(i))
     
-    cell.className = "heat1"
+    //cell.className = "heat1"
     cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
   }
 }

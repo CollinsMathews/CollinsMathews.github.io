@@ -6,11 +6,12 @@ var test = [
 ];
 
 function heatmap(A) {
-        var n = A.length;
+        var n = A[0].length;
         var heat = []
         for (var i = 0; i < n; i++) {
                 heat.push(0);
                 for (var j = 0; j < n; j++) {
+                        console.log(A[j])
                         heat[i] += A[j][i];
                 }
         }
