@@ -84,7 +84,7 @@ for (var i = 0; i < shift_times.length; i++) {
         shift_table_string += '<td class="shift_cell" id="shift_cell_' + days_of_week[j] + '_' + shift_times[i] + '">' + '<form action="#" id="credit_input_' + days_of_week[j] + '_' + shift_times[i] + '">\
         <div class="mdl-textfield mdl-js-textfield">\
         <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input shift_cell" type="text" oninput="credChange(\'' + days_of_week[j] + '_' + shift_times[i] + '\')" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
-        <label class="mdl-textfield__label" for="sample2">Credits...</label>\
+        <label class="mdl-textfield__label" for="sample2">Input Credits</label>\
         </div>\
         </form>' + '</td>';
     }
