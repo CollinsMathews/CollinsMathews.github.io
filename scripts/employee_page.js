@@ -4,6 +4,12 @@ var creds_remaining = creds_init;
 var name = localStorage.getItem('name');
 var image = localStorage.getItem('image');
 
+function init() {
+    gapi.load('auth2', function() {
+    handleClientLoad()
+  })
+}
+  
 function handleClientLoad() {
 
     gapi.auth2.init({
@@ -28,6 +34,7 @@ function handleClientLoad() {
       }); 
     });
   }
+}
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];

@@ -11,7 +11,7 @@
 
 <body>
     <div id="table_wrapper">
-        <div id = "animated-example" class = "animated fadeIn" onclick="myFunction()">
+        <div id="animated-example" class="animated fadeIn" onclick="myFunction()">
             <span class="popuptext" id="myPopup"></span>
         </div>
         <div id="table_container">
@@ -36,7 +36,4 @@
 </body>
 <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
 <script src="scripts/employee_page.js"></script>
-<script async defer src="https://apis.google.com/js/api.js" 
-        onload="this.onload=function(){};handleClientLoad()" 
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-</script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
