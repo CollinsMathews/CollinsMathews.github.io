@@ -36,7 +36,7 @@ function handleClientLoad() {
 
 
 
-var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+var days_of_week = ['mon', 'tues', 'wed', 'thur', 'fri', 'sat', 'sun'];
 var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM', '8:00PM - 11:00PM'];
 
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
