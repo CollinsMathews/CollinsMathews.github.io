@@ -56,7 +56,25 @@ function onRetrieve() {
       pref_array.push(templist);
 
       MunkresAlgorithm(pref_array);
+      displayShifts();
   });
+}
+
+function displayShifts() {
+  var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
+                    "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
+                    "Billy", "Billy", "Billy", "Billy", "Billy", "Billy", "Billy",
+                    "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
+  var my_array = random_array();
+  var shift_assignments = MunkresAlgorithm(my_array);
+  var final_shifts = new Array(28);
+
+  for (var i = 0; i < 28; i++) {
+    index = shift_assignments[i];
+    console.log("shift_cell" + String(index[1]));
+    document.getElementById("shift_cell" + String(index[1])).innerHTML = name_array[index[0]] + " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
+    final_shifts[index[1]] = index[0];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+  }
 }
 
 function random_array() {
@@ -70,17 +88,3 @@ function random_array() {
   return my_array;
 }
 
-var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
-              "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
-              "Billy", "Billy", "Billy", "Billy", "Billy", "Billy", "Billy",
-              "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
-var my_array = random_array();
-var shift_assignments = MunkresAlgorithm(my_array);
-var final_shifts = new Array(28);
-
-for (var i = 0; i < 28; i++) {
-  index = shift_assignments[i];
-  console.log("shift_cell" + String(index[1]));
-  document.getElementById("shift_cell" + String(index[1])).innerHTML = name_array[index[0]] + " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
-  final_shifts[index[1]] = index[0];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-}
