@@ -42,6 +42,7 @@ var config = {
 firebase.initializeApp(config);
 
 var pref_array = [];
+var name_array = [];
 
 function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
@@ -54,11 +55,12 @@ function onRetrieve() {
         }
       }
       pref_array.push(templist);
-
       MunkresAlgorithm(pref_array);
       displayShifts();
   });
 }
+
+name_array.push(employee_shift_pref.user);
 
 function displayShifts() {
   var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
