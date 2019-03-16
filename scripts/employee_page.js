@@ -1,5 +1,7 @@
-shift_table_string = '';
-creds_remaining = 1000;
+var shift_table_string = '';
+var creds_remaining = 1000;
+var name = localStorage.getItem('name');
+var image = localStorage.getItem('image');
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
