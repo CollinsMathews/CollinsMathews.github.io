@@ -8,12 +8,7 @@ var shift_times = ['8:00AM - 12:00PM', '10:00PM - 2:00PM', '12:00PM - 4:00PM', '
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length; i++) {
   if (i == 0) {
-    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + '<form action="#">\
-        <div class="mdl-textfield mdl-js-textfield">\
-          <input class="mdl-textfield__input" type="text" id="name_input">\
-          <label class="mdl-textfield__label" for="name_input">Name...</label>\
-        </div>\
-      </form>' + '</th>';
+    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + '</th>';
   } else {
     shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i] + '</th>';
   }
@@ -25,12 +20,7 @@ shift_table_string += '</tr></thead>';
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
   for (var j = 0; j < days_of_week.length - 1; j++) {
-    shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
-        <div class="mdl-textfield mdl-js-textfield">\
-        <input id="' + days_of_week[j + 1] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
-        <label class="mdl-textfield__label" for="sample2">Credits...</label>\
-        </div>\
-        </form>' + '</td>';
+    shift_table_string += '<td class="shift_cell">' + 'Testies' + '</td>';
   }
   shift_table_string += '</tr>';
 }
@@ -65,3 +55,25 @@ function onRetrieve() {
   });
 }
 
+function random_array() {
+  var my_array = [];
+  for (var i = 0; i < 28; i++) {
+    my_array.push([]);
+    for (var j = 0; j < 28; j++) {
+      my_array[i].push(Math.random());
+    }
+  }
+  return my_array;
+}
+
+var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
+              "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
+              "Billy", "Billy", "Billy", "Billy", "Billy", "Billy", "Billy",
+              "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
+var my_array = random_array();
+var shift_assignments = MunkresAlgorithm(my_array);
+var final_shifts = new Array(28);
+
+for (var i = 0; i < 28; i++) {
+  
+}
