@@ -48,8 +48,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var pref_array = [];
+
 function onRetrieve() {
+  var pref_array=[];
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
     for (var j = 0; j < employee_count; j++) {
       var employee_shift_pref = user_shift_data_object.shift_data();
@@ -60,5 +61,6 @@ function onRetrieve() {
       pref_array.push(templist);
     }
   });
+  return pref_array;
 }
 
