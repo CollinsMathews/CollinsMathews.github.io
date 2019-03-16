@@ -20,16 +20,7 @@ shift_table_string += '</tr></thead>';
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
   for (var j = 0; j < days_of_week.length - 1; j++) {
-<<<<<<< HEAD
     shift_table_string += '<td class="shift_cell">' + 'Testies' + '</td>';
-=======
-    shift_table_string += '<td class="employer_shift_cell">' + '<form action="#" id="preferences_output">\
-        <div class="mdl-textfield mdl-js-textfield">\
-        <input id="' + days_of_week[j + 1] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
-        <label class="mdl-textfield__label" for="sample2">Credits...</label>\
-        </div>\
-        </form>' + '</td>';
->>>>>>> 3f53c4ce85b3321995f106631f09d4e96e1da3e9
   }
   shift_table_string += '</tr>';
 }
