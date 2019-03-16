@@ -8,12 +8,14 @@ var shift_times = ['8:00AM - 12:00PM', '10:00PM - 2:00PM', '12:00PM - 4:00PM', '
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
   if (i == 0) {
-    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + '<form action="#">\
+    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + 
+    '<form action="#">\
         <div class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
           <label class="mdl-textfield__label" for="name_input">Name...</label>\
         </div>\
-      </form>' + '</th>';
+      </form>' + 
+      '</th>';
   } else {
     shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i - 1] + '</th>';
   }

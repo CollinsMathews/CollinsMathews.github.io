@@ -7,12 +7,20 @@ var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
     if (i == 0) {
-        shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + '<form action="#">\
+        shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
+            '<form action="#">\
         <div class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
           <label class="mdl-textfield__label" for="name_input">Name...</label>\
         </div>\
-      </form>' + '</th>';
+      </form>' +
+            '<form action="#" id="credit_input">\
+      <div class="mdl-textfield mdl-js-textfield">\
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="no_of_shift">\
+      <label class="mdl-textfield__label" for="no_of_shift">No of Shifts....</label>\
+      </div>\
+      </form>'
+        '</th>';
     } else {
         shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i - 1] + '</th>';
     }
@@ -57,7 +65,7 @@ function onSubmit() {
     var credits_used;
     shift_array = [];
     for (var i = 0; i < shift_times.length; i++) {
-        for (var j = 0; j < days_of_week.length ; j++) {
+        for (var j = 0; j < days_of_week.length; j++) {
             var day_on = days_of_week[j];
             var shift_time_on = shift_times[i];
 
@@ -75,17 +83,34 @@ function onSubmit() {
     }
 
     var username;
+    var no_of_shifts;
+    var username_valid_flag = 0;
+    var no_of_shifts_flag = 0;
 
     try {
-        username = document.getElementById("name_input").value;
+        if ((username = document.getElementById("name_input").value) == "") {
+            alert("Please Enter A Name!");
+        }
     } catch (err) {
-        username = "DID NOT PUT USERNAME";
+        alert("Please Enter A Name!");
     }
 
-    var JSON_send = {
-        user: username,
-        shift_data: shift_array
-    };
+    try {
+        if ((no_of_shifts = document.getElementById("no_of_shift").value) == "") {
+            alert("Please Enter How Many Shifts You Want!");
+        }
+    } catch (err) {
+        alert("Please Enter How Many Shifts You Want!");
+    }
 
-    firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
+    if (username_valid_flag && no_of_shifts_flag) {
+
+        var JSON_send = {
+            user: username,
+            shift_data: shift_array,
+            no_of_shift: Number(no_of_shifts)
+        };
+
+        firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
+    }
 }
