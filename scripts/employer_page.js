@@ -1,4 +1,3 @@
-
 shift_table_string = '';
 
 
@@ -6,11 +5,11 @@ var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
 
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
-for (var i = 0; i < days_of_week.length+1; i++) {
+for (var i = 0; i < days_of_week.length + 1; i++) {
   if (i == 0) {
     shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + '</th>';
   } else {
-    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i-1] + '</th>';
+    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i - 1] + '</th>';
   }
 }
 
@@ -47,17 +46,17 @@ var name_array = [];
 function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
     console.log(user_shift_data_object.val());
-      var employee_shift_pref = user_shift_data_object.val();
-      for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
-        var templist = [];
-        for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-          templist.push(Number(employee_shift_pref.shift_data[i].credits));
-        }
-        pref_array.push(templist);
-        name_array.push(employee_shift_pref.user);
+    var employee_shift_pref = user_shift_data_object.val();
+    for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
+      var templist = [];
+      for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+        templist.push(Number(employee_shift_pref.shift_data[i].credits));
       }
+      pref_array.push(templist);
+      name_array.push(employee_shift_pref.user);
+    }
+    displayShifts(pref_array);
   });
-  displayShifts(pref_array);
 }
 
 var my_array = random_array();
@@ -69,8 +68,8 @@ function displayShifts(my_array) {
                     "Billy", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff",
                     "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
                     */
-  
-  
+
+
   var shift_assignments = MunkresAlgorithm(my_array);
 
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
@@ -81,7 +80,7 @@ function displayShifts(my_array) {
     var cell = document.getElementById("shift_cell" + String(index[1]))
     var name = name_array[index[0]]
     var weighting = " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
-    cell.innerHTML = name + weighting;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    cell.innerHTML = name + weighting;
   }
 }
 
@@ -95,4 +94,3 @@ function random_array() {
   }
   return my_array;
 }
-
