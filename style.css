@@ -13,6 +13,7 @@ td.shift_cell {
   background-color: #ffd131;
   padding: 5em;
   text-align: center;
+  font-size: 30px !important;  
 }
 
 td.heat1 {
@@ -123,8 +124,18 @@ div.mdl-textfield {
   width: 100%;
   color: white;
   text-align: center !important;
+  font-size: 34px !important;
 
 }
+
+div.mdl-textfield.shift_cell {
+  width: 100%;
+  color: white;
+  text-align: center !important;
+  font-size: 34px !important;
+
+}
+
 
 div#submit_button_container {
   padding: 2% 40% 5% 40%;
@@ -240,8 +251,11 @@ button#submit_button {
   color: black;
   background-color: darkgray;
   text-align: center !important;
-
+  font-size: 30px !important;
+  color: red !important;
 }
+
+
 
 input#no_of_shift.mdl-textfield__input {
   color: black;
