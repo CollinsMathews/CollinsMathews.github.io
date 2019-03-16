@@ -133,16 +133,27 @@ function displayHeat(my_array) {
       }
     }
   }
-
+  toggleHeat(1, heat, heat_N);
   console.log(heat_N);
+}
 
-
-  for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-    console.log(i);
-    var cell = document.getElementById("shift_cell" + String(i))
-    
-    cell.className = "heat" + String(heat_N[i]);
-    cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+function toggleHeat(Z, heat, heat_N) {
+  if (Z==1) {
+    for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+      console.log(i);
+      var cell = document.getElementById("shift_cell" + String(i))
+      
+      cell.className = "heat" + String(heat_N[i]);
+      cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    }
+  } else {
+    for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+      console.log(i);
+      var cell = document.getElementById("shift_cell" + String(i))
+      
+      cell.className = "employer_shift_cell"
+      cell.innerHTML = String(heat[i]); 
+    }
   }
 }
 
