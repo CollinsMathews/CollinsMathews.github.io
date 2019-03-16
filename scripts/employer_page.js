@@ -83,7 +83,7 @@ function onHeatmap() {
     }
     heat_array.push(heat_array_aux);
   });
-  return(heat_array); // this does not work yet.
+  displayHeat(heat_array); // this does not work yet.
 }
 
 function findShifts(my_array) {
