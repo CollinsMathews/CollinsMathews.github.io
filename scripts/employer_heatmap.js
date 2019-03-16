@@ -1,5 +1,3 @@
-
-
 shift_table_string = '';
 
 
