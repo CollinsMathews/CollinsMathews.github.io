@@ -19,7 +19,6 @@ shift_table_string += '</tr></thead>';
 
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
-<<<<<<< HEAD
   for (var j = 0; j < days_of_week.length - 1; j++) {
     shift_table_string += '<td class="employer_shift_cell">' + 'Testies' + '</td>';
 =======
