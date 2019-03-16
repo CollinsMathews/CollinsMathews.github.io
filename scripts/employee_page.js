@@ -69,7 +69,7 @@ function onSubmit() {
             shift_array.push({
                 day: day_on,
                 shift_time: shift_time_on,
-                credits: credits_used
+                credits: Number(credits_used)
             });
         }
     }
