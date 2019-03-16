@@ -1,4 +1,4 @@
-shift_table_string = '';
+var shift_table_string = '';
 
 var days_of_week = ['', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var shift_times = ['8:00AM - 12:00M', '10:00PM - 2:00PM', '12:00PM - 4:00PM', '2:00PM - 6:00PM'];
