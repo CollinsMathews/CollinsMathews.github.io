@@ -5,36 +5,27 @@ var name = localStorage.getItem('name');
 var image = localStorage.getItem('image');
 
 function init() {
-    gapi.load('auth2', function() {
-    handleClientLoad()
-  })
+    gapi.load('auth2', function () {
+        handleClientLoad()
+    })
 }
-  
+
 function handleClientLoad() {
 
     gapi.auth2.init({
         'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
     }).then(function () {
-      GoogleAuth = gapi.auth2.getAuthInstance();
+        GoogleAuth = gapi.auth2.getAuthInstance();
 
-      // Listen for sign-in state changes.
-      GoogleAuth.isSignedIn.listen(updateSigninStatus);
+        // Listen for sign-in state changes.
+        GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
-      // Handle initial sign-in state. (Determine if user is already signed in.)
-      var user = GoogleAuth.currentUser.get();
-      setSigninStatus();
-
-      // Call handleAuthClick function when user clicks on
-      //      "Sign In/Authorize" button.
-      $('#sign-in-or-out-button').click(function() {
-        handleAuthClick();
-      }); 
-      $('#revoke-access-button').click(function() {
-        revokeAccess();
-      }); 
+        // Handle initial sign-in state. (Determine if user is already signed in.)
+        var user = GoogleAuth.currentUser.get();
+        setSigninStatus();
     });
-  }
 }
+
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
@@ -255,6 +246,6 @@ for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('User signed out.');
+        console.log('User signed out.');
     });
-  }
+}
