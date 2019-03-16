@@ -11,25 +11,26 @@
 
 <body>
     <div id="table_wrapper">
+
         <div id="table_container">
             <a href="index.html">
                 <button id="prefer_io_button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                        prefer.io
-                    </button>
-                </a>
-                <p class="creds_remaining"></p>
+                    prefer.io
+                </button>
+            </a>
+            <p class="creds_remaining"></p>
 
             <table id="shift_table" class="mdl-data-table mdl-js-data-table mdl-data-table- mdl-shadow--2dp">
             </table>
         </div>
     </div>
     <div id="submit_button_container">
-        <button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised" type="button">SUBMIT</button>
+        <button id="submit_button" onclick="onSubmit()"> SUBMIT</button>
     </div>
     <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
-      </div>
+    </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
 <script src="scripts/employee_page.js"></script>

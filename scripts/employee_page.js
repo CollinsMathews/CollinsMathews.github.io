@@ -150,7 +150,7 @@ function credChange(cell_id) {
             }
         }
     }
-
+    
     document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + (Number(creds_remaining) - Number(sum)) + " credits left.";
 
 }
@@ -167,14 +167,3 @@ for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
             )) e.preventDefault();
     });
 }
-
-(function() {
-    'use strict';
-    var snackbarContainer = document.querySelector('#demo-toast-example');
-    var showToastButton = document.querySelector('#demo-show-toast');
-    showToastButton.addEventListener('click', function() {
-      'use strict';
-      var data = {message: 'Please make sure you have entered your name and number of shifts you want!'};
-      snackbarContainer.MaterialSnackbar.showSnackbar(data);
-    });
-  }());
