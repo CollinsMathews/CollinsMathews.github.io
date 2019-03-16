@@ -47,14 +47,13 @@ function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
     console.log(user_shift_data_object.val());
       var employee_shift_pref = user_shift_data_object.val();
-      var templist = [];
-      for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-        for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
+      for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
+        var templist = [];
+        for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
           templist.push(Number(employee_shift_pref.shift_data[i].credits));
         }
+        pref_array.push(templist);
       }
-      pref_array.push(templist);
-
       MunkresAlgorithm(pref_array);
       displayShifts();
   });
