@@ -236,10 +236,10 @@ button#submit_button {
   height: 50px;
 }
 
-input#name_input.mdl-textfield__input {
+.mdl-textfield__input {
   color: black;
   background-color: darkgray;
-
+  text-align: center !important;
 
 }
 
