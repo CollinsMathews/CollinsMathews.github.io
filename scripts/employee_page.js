@@ -27,7 +27,7 @@ document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
     if (i == 0) {
         if (name != "null") {
-            shift_table_string += '<th id="name_input" class="mdl-data-table__cell--non-numeric">You are logged in as: <br/><br/>' + name;
+            shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">You are logged in as: <br/><br/><div id="name_input">' + name + '</div>';
         } else {
             shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
                 '<form action="#">\
