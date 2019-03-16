@@ -1,4 +1,5 @@
-shift_table_string = '';
+var shift_table_string = '';
+var on_receive_flag = 0;
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
@@ -46,30 +47,40 @@ firebase.initializeApp(config);
 var shift_assignments = [];
 
 function onRetrieve() {
-  var pref_array = [];
-  var names = [];
-  firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
-    console.log(user_shift_data_object.val());
-    var employee_shift_pref = user_shift_data_object.val();
-    for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
-      var templist = [];
-      for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-        templist.push(Number(employee_shift_pref.shift_data[i].credits));
+  if (!on_receive_flag) {
+    var pref_array = [];
+    var names = [];
+    firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
+      console.log(user_shift_data_object.val());
+      var employee_shift_pref = user_shift_data_object.val();
+      for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
+        var templist = [];
+        for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+          templist.push(Number(employee_shift_pref.shift_data[i].credits));
+        }
+        names.push(employee_shift_pref.user);
+        pref_array.push(templist);
       }
-      names.push(employee_shift_pref.user);
-      pref_array.push(templist);
-    }
-    shift_assignments = findShifts(pref_array);
-    displayShifts(pref_array, names);
+      shift_assignments = findShifts(pref_array);
+      displayShifts(pref_array, names);
 
-    var heat_array_aux = [];
-    for (var k = 0; k< days_of_week.length*shift_times.length; k++){
-      heat_array_aux.push(Number(employee_shift_pref.shift_data[k].credits))
-    }
-    heat_array.push(heat_array_aux);
+      var heat_array_aux = [];
+      for (var k = 0; k < days_of_week.length * shift_times.length; k++) {
+        heat_array_aux.push(Number(employee_shift_pref.shift_data[k].credits))
+      }
+      heat_array.push(heat_array_aux);
 
-  });
-  return (pref_array)
+    });
+
+    on_receive_flag = 1;
+    document.getElementById('submit_button').innerText = 'generate heatmap';
+
+    return (pref_array)
+  } else {
+    onHeatmap();
+    on_receive_flag = 0;
+    document.getElementById('submit_button').innerText = 'get timetable';
+  }
 }
 
 function onHeatmap() {
@@ -78,7 +89,7 @@ function onHeatmap() {
     console.log(user_shift_data_object.val());
     var employee_shift_pref = user_shift_data_object.val();
     var heat_array_aux = [];
-    for (var k = 0; k< days_of_week.length*shift_times.length; k++){
+    for (var k = 0; k < days_of_week.length * shift_times.length; k++) {
       heat_array_aux.push(Number(employee_shift_pref.shift_data[k].credits))
     }
     heat_array.push(heat_array_aux);
@@ -87,7 +98,7 @@ function onHeatmap() {
 }
 
 function findShifts(my_array) {
-  return( MunkresAlgorithm(my_array));
+  return (MunkresAlgorithm(my_array));
 }
 
 function displayShifts(my_array, name_array) {
@@ -104,10 +115,10 @@ function displayShifts(my_array, name_array) {
 function displayHeat(my_array) {
   var heat = heatmap(my_array);
   max_heat = Math.max(heat);
-  
+
   if (max_heat > 0) {
     for (var i = 0; i < heat.length; i++) {
-      heat[i] = Math.round(heat[i]/max_heat);
+      heat[i] = Math.round(heat[i] / max_heat);
     }
   }
 
@@ -117,9 +128,9 @@ function displayHeat(my_array) {
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
     console.log(i);
     var cell = document.getElementById("shift_cell" + String(i))
-    
+
     //cell.className = "heat1"
-    cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    cell.innerHTML = String(heat[i]);
   }
 }
 
