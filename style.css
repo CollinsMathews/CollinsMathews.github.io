@@ -12,6 +12,7 @@ td.shift_cell {
   height: 10%;
   background-color: #ffd131;
   padding: 5em;
+  text-align: center;
 }
 
 td.heat1 {
@@ -120,6 +121,9 @@ th#days_cell {
 
 div.mdl-textfield {
   width: 100%;
+  color: white;
+  text-align: center !important;
+
 }
 
 div#submit_button_container {
@@ -235,6 +239,8 @@ button#submit_button {
 input#name_input.mdl-textfield__input {
   color: black;
   background-color: darkgray;
+
+
 }
 
 input#no_of_shift.mdl-textfield__input {
