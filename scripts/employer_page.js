@@ -56,7 +56,7 @@ function onRetrieve() {
     console.log(user_shift_data_object.val());
       var employee_shift_pref = user_shift_data_object.val().shift_data;
       var templist = [];
-      for (var i = 0; i < 28; i++) {
+      for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
         templist.push(employee_shift_pref[i].credits);
       }
       pref_array.push(templist);
