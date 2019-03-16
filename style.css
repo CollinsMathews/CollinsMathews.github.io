@@ -2,7 +2,7 @@ td.shift_times_cell {
   text-align: center !important;
   width: 10%;
   font-size: 1.2em;  
-  color:white;
+  color:#373737;
   font-family: 'Cabin', sans-serif;
 }
 
@@ -10,13 +10,15 @@ td.shift_times_cell {
 td.shift_cell {
   width: 10%;
   height: 10%;
-  background-color: #fad420;  
+  background-color: #ffd131;  
   padding: 5em;
 }
 
 td.shift_cell:hover {
-  background-color: #2d8a00;
+  background-color: #00843d;
 }
+
+
 
 .mdl-data-table tbody tr {
   position: relative;
@@ -31,7 +33,7 @@ td.shift_cell:hover {
 th.days_cell {
   text-align: center;
   width: 100%;
-  color: white;
+  color: #373737;
   
 }
 
@@ -39,21 +41,29 @@ table#shift_table {
   width: 100%;
   margin: 0;
   height: 100%;
-  background-color:#191919 !important;
-  border: none;
+  background-color:#e6e6e6 !important;
+  border: 10px !important;
+  box-shadow: none !important;  
 
 }
+
+td.shift_cell {
+  border: none !important;
+}
+
 div#table_container {
   padding: 5% 10% 0 10%;
   height: 80vh;
-  background-color: #191919 !important;
+  background-color: #e6e6e6 !important;
+  border: 10px !important;
+  box-shadow: none !important;  
 }
 
 th#days_cell {
   text-align: center !important;
   vertical-align: middle !important;
   font-size: 1.2em;  
-  color:white;
+  color:#373737;
   font-family: 'Cabin', sans-serif;
 }
 
@@ -65,22 +75,30 @@ div#submit_button_container {
   padding: 2% 40% 5% 40%;
   vertical-align: center !important;
   height: 20px;
-  background-color: #191919;
+  background-color: #e6e6e6;
   
+}
+
+button#submit_button:hover {
+  transition-duration: 0.2s; 
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property:  background-color !important ; 
+  background-color:#00843D;
+
 }
 
 button#employee_button {
 
-  background-color: #fad420;
+  background-color: #ffd131;
 
 }
 
 button#employer_button {
-  background-color: #fad420;
+  background-color: #ffd131;
 }
 
 body#main_page_body {
-  background-color: #191919;
+  background-color: #e6e6e6;
   text-align: center;
   
 }
@@ -92,15 +110,15 @@ div#main_page_button_wrapper {
 }
 
 h1 {
-  color: #fad420;
+  color: #ffd131;
 }
 
 
 button#submit_button {
   width: 100%;
-  background-color: #fad420; 
+  background-color: #ffd131; 
   border: none;
-  color: #191919;
+  color: #373737;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
