@@ -42,6 +42,7 @@ var config = {
 firebase.initializeApp(config);
 
 var pref_array = [];
+var heat_array = [];
 var name_array = [];
 var shift_assignments = [];
 
@@ -57,6 +58,11 @@ function onRetrieve() {
         pref_array.push(templist);
         name_array.push(employee_shift_pref.user);
       }
+      heat_array_aux = [];
+      for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+        heat_array_aux.push(Number(employee_shift_pref.shift_data[i].credits));
+      }
+      heat_array.push(heat_array_aux);
       findShifts(pref_array);
       displayShifts(pref_array);
   });
@@ -79,12 +85,18 @@ function displayShifts(my_array) {
 
 function displayHeat(my_array) {
   var heat = heatmap(my_array);
+  var heat_5 = []
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
     index = shift_assignments[i];
     console.log(i);
     var cell = document.getElementById("shift_cell" + String(index[1]))
+    
+    //cell.className = ""
     cell.innerHTML = String(heat[i]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
   }
+}
+
+function findHeat(value, ) {
 }
 
 function random_array() {
