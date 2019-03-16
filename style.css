@@ -13,6 +13,7 @@ td.shift_cell {
 
 th.days_cell {
   text-align: center;
+  width: 100%;
 }
 
 table#shift_table {
@@ -23,11 +24,24 @@ table#shift_table {
 
 div#table_container {
   padding: 2% 10%;
-  height: 94vh;
+  height: 80vh;
 }
 
 th#days_cell {
   text-align: center !important;
   vertical-align: middle !important;
-  font-size:2em;
+  font-size: 2em;
+}
+
+div.mdl-textfield {
+  width: 100%;
+}
+
+div#submit_button_container {
+  padding: 2% 10%;
+  height: 20px;
+}
+
+button#submit_button {
+  width: 100%;
 }

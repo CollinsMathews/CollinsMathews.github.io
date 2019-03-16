@@ -14,10 +14,10 @@ shift_table_string += '</tr></thead>';
 for (var i = 0; i < 4; i++) {
     shift_table_string += '<tr id="row_' + (i+1) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
     for (var j = 0; j < 7; j++) {
-        shift_table_string += '<td class="shift_cell">' + '<form action="#">\
+        shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
         <div class="mdl-textfield mdl-js-textfield">\
-        <input class="mdl-textfield__input" type="text" id="sample1">\
-        <label class="mdl-textfield__label" for="sample1">Text...</label>\
+        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
+        <label class="mdl-textfield__label" for="sample2">Credits...</label>\
         </div>\
         </form>' + '</td>';
     }
