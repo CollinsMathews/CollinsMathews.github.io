@@ -255,3 +255,9 @@ input#no_of_shift.mdl-textfield__input {
   color: black;
   background-color: darkgray;
 }
+
+.g-signin2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 190px;
+}
