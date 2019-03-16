@@ -118,65 +118,69 @@ function onSubmit() {
     var no_of_shifts_flag = 0;
 
     try {
-        if ((username = document.getElementById("name_input").value) == "") {
-            alert("Please Enter A Name!");
-        } else {
+        if (name != "null") {
+            username = name;
             username_valid_flag = 1;
-        }
-    } catch (err) {
+        } else if ((username = document.getElementById("no_of_shift").value) == "") {
         alert("Please Enter A Name!");
+    } else {
+        username_valid_flag = 1;
     }
 
-    try {
-        if ((no_of_shifts = document.getElementById("no_of_shift").value) == "") {
-            alert("Please Enter How Many Shifts You Want!");
-        } else {
-            no_of_shifts_flag = 1;
-        }
-    } catch (err) {
+} catch (err) {
+    alert("Please Enter A Name!");
+}
+
+try {
+    if ((no_of_shifts = document.getElementById("no_of_shift").value) == "") {
         alert("Please Enter How Many Shifts You Want!");
+    } else {
+        no_of_shifts_flag = 1;
     }
+} catch (err) {
+    alert("Please Enter How Many Shifts You Want!");
+}
 
-    if (username_valid_flag && no_of_shifts_flag) {
+if (username_valid_flag && no_of_shifts_flag) {
 
-        var JSON_send = {
-            user: username,
-            shift_data: shift_array,
-            no_of_shift: Number(no_of_shifts)
-        };
+    var JSON_send = {
+        user: username,
+        shift_data: shift_array,
+        no_of_shift: Number(no_of_shifts)
+    };
 
-        firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
+    firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
 
-        var animated_style = document.getElementsByClassName('animated')[0].style;
-        animated_style['background-color'] = 'white';
-        animated_style['background-repeat'] = 'no-repeat';
-        animated_style['background-position'] = 'left top';
-        animated_style['padding-top'] = '95px';
-        animated_style['margin-bottom'] = '60px';
-        animated_style['-webkit-animation-duration'] = '5s';
-        animated_style['animation-duration'] = '5s';
-        animated_style['-webkit-animation-fill-mode'] = 'both';
-        animated_style['animation-fill-mode'] = 'both';
+    var animated_style = document.getElementsByClassName('animated')[0].style;
+    animated_style['background-color'] = 'white';
+    animated_style['background-repeat'] = 'no-repeat';
+    animated_style['background-position'] = 'left top';
+    animated_style['padding-top'] = '95px';
+    animated_style['margin-bottom'] = '60px';
+    animated_style['-webkit-animation-duration'] = '5s';
+    animated_style['animation-duration'] = '5s';
+    animated_style['-webkit-animation-fill-mode'] = 'both';
+    animated_style['animation-fill-mode'] = 'both';
 
-        var popup_style = document.getElementById('animated-example').style;
-        popup_style['z-index'] = 1
-        popup_style['animation-play-state'] = 'running';
+    var popup_style = document.getElementById('animated-example').style;
+    popup_style['z-index'] = 1
+    popup_style['animation-play-state'] = 'running';
 
-        document.getElementById('animated-example').innerText = 'prefer.io will now log out.'
-        animated_style['text-align'] = 'center';
-        animated_style['font-size'] = '5em';
-        animated_style['padding-top'] = '40%';
+    document.getElementById('animated-example').innerText = 'prefer.io will now log out.'
+    animated_style['text-align'] = 'center';
+    animated_style['font-size'] = '5em';
+    animated_style['padding-top'] = '40%';
 
-        setTimeout(function () {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-            window.href('index.html');
+    setTimeout(function () {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+        window.href('index.html');
 
-        }, 2000);
+    }, 2000);
 
-    }
+}
 
 
 }
