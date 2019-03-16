@@ -121,12 +121,19 @@ button#employee_button {
 
   background-color: #ffd131;
   font-family: "cabin", sans-serif;
+  text-align: center; 
+  vertical-align: center;
+  padding: 2em 3em 5em 3em;
+  
 
 }
 
 button#employer_button {
   background-color: #ffd131;
   font-family: "cabin", sans-serif;
+  text-align: center !important;
+  vertical-align: center ! important;
+  padding: 2em 3em 5em 3em
 }
 
 body#main_page_body {
@@ -182,16 +189,32 @@ button.prefer_io_button:hover {
 
 
 
-button#submit_button {
-  width: 100%;
-  background-color: #ffd131; 
+button#demo-show-toast {
+  width: 200px;
+  background-color: #ffd131;
   border: none;
   color: #373737;
-  padding: 15px 40px;
   margin: 70px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 30px;
+  font-size: 20px;
   font-family: "cabin", sans-serif;
+  height: 50px;
+  box-shadow: none !important;  
+}
+
+button#submit_button{
+  width: 200px;
+  background-color: #ffd131;
+  border: none;
+  color: #373737;
+  margin: 70px 0px 50px 0px !important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-family: "cabin", sans-serif;
+  height: 50px;
+
 }
