@@ -21,9 +21,9 @@ td.shift_cell:hover {
 p.creds_remaining {
   color: #373737;
   font-family: "cabin", sans-serif;
-  font-size: 2em;
+  font-size: 4em;
   text-align: center;
-
+  vertical-align: bottom;
 }
 
 
@@ -75,10 +75,11 @@ td.shift_cell {
 
 td.employer_shift_cell {
   border-width: 1px !important;
-  border-color: #d56900 !important;  
+  border-color: black !important;  
   background-color: #ffd131;
   text-align: center !important; 
   border-left: thick solid #00843D;
+  border-right: thick solid black;
 }
 
 div#table_container {
@@ -87,20 +88,11 @@ div#table_container {
   background-color: #e6e6e6 !important;
 }
 
-div#employer_table_container {
-  padding: 5% 10% 0 10%;
-  height: 80vh;
-  background-color: #e6e6e6 !important;
-  border: 10px !important;
-  box-shadow: none !important;  
-  text-align: center;
-}
-
 
 th#days_cell {
   text-align: center !important;
-  vertical-align: middle !important;
-  font-size: 1.2em;  
+  vertical-align: bottom !important;
+  font-size: 1.7em;  
   color:#373737;
   font-family: 'Cabin', sans-serif;
 }
