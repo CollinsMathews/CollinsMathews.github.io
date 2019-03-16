@@ -201,4 +201,20 @@ button#demo-show-toast {
   font-size: 20px;
   font-family: "cabin", sans-serif;
   height: 50px;
+  box-shadow: none !important;  
+}
+
+button#submit_button{
+  width: 200px;
+  background-color: #ffd131;
+  border: none;
+  color: #373737;
+  margin: 70px 0px 50px 0px !important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-family: "cabin", sans-serif;
+  height: 50px;
+
 }
