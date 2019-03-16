@@ -1,9 +1,24 @@
-.mdl-data-table td
-{
-  font-family: "Times New Roman",Georgia,serif;
-  font-size: 20px;
+td.shift_times_cell {
+  text-align: center !important;
+  width: 20px;
+}
+
+td.shift_cell {
+  width: 10%;
+  height: 10%;
+}
+
+th.days_cell {
   text-align: center;
-  text-decoration: underline;
-  color: #ff0000;
-  background-color: #00ffff;
+}
+
+table#shift_table {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+div#table_container {
+  padding: 2% 20%;
+  height: 94vh;
 }
