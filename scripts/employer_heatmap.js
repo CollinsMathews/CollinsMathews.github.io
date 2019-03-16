@@ -1,3 +1,5 @@
+
+
 shift_table_string = '';
 
 
@@ -48,9 +50,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var pref_array = [];
 
 function onRetrieve() {
-  var pref_array=[];
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
       var employee_shift_pref = user_shift_data_object.shift_data();
       var templist = [];
@@ -59,6 +61,7 @@ function onRetrieve() {
       }
       pref_array.push(templist);
   });
-  return pref_array;
+
+  MunkresAlgorithm(pref_array)
 }
 
