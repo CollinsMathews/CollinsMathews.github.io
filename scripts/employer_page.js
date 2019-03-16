@@ -105,11 +105,13 @@ function displayHeat(my_array) {
   var heat = heatmap(my_array);
   max_heat = Math.max(heat);
   
-for (var i = 0; i < heat.length; i++) {
-  heat[i] = Math.round(heat[i]/max_heat);
-}
+  if (max_heat > 0) {
+    for (var i = 0; i < heat.length; i++) {
+      heat[i] = Math.round(heat[i]/max_heat);
+    }
+  }
 
-console.log(heat);
+  console.log(heat);
 
 
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
