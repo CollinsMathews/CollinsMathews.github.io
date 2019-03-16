@@ -4,19 +4,32 @@ var creds_remaining = creds_init;
 var name = localStorage.getItem('name');
 var image = localStorage.getItem('image');
 
-function init() {
-    gapi.auth2.init({
-        'apiKey': 'AIzaSyCyEf6lPHuFQM1chZyddCrrkahFeBr2t9g',
-        'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
-        'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
-    }).then(function () {
-        GoogleAuth = gapi.auth2.getAuthInstance();
+function handleClientLoad() {
 
-        // Listen for sign-in state changes.
-        GoogleAuth.isSignedIn.listen(updateSigninStatus);
+    gapi.client.init({
+        'apiKey': 'YOUR_API_KEY',
+        'clientId': 'YOUR_CLIENT_ID',
+        'scope': SCOPE
+    }).then(function () {
+      GoogleAuth = gapi.auth2.getAuthInstance();
+
+      // Listen for sign-in state changes.
+      GoogleAuth.isSignedIn.listen(updateSigninStatus);
+
+      // Handle initial sign-in state. (Determine if user is already signed in.)
+      var user = GoogleAuth.currentUser.get();
+      setSigninStatus();
+
+      // Call handleAuthClick function when user clicks on
+      //      "Sign In/Authorize" button.
+      $('#sign-in-or-out-button').click(function() {
+        handleAuthClick();
+      }); 
+      $('#revoke-access-button').click(function() {
+        revokeAccess();
+      }); 
     });
-}
+  }
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
@@ -233,3 +246,10 @@ for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
             )) e.preventDefault();
     });
 }
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
