@@ -223,7 +223,7 @@ function credChange(cell_id) {
         }
     }
 
-    creds_remaining = (Number(creds_init) - Number(sum))
+    creds_remaining = (Number(creds_remaining) - Number(sum))
 
     document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_remaining + " credits left.";
 
