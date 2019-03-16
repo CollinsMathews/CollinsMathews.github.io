@@ -52,14 +52,12 @@ firebase.initializeApp(config);
 function onRetrieve() {
   var pref_array=[];
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
-    for (var j = 0; j < employee_count; j++) {
       var employee_shift_pref = user_shift_data_object.shift_data();
       var templist = [];
       for (var i = 0; i < 28; i++) {
         templist.push(employee_shift_pref[i].credits());
       }
       pref_array.push(templist);
-    }
   });
   return pref_array;
 }
