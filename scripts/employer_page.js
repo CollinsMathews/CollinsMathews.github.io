@@ -2,7 +2,7 @@
 shift_table_string = '';
 
 
-var days_of_week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 var shift_times = ['8:00AM - 12:00PM', '10:00PM - 2:00PM', '12:00PM - 4:00PM', '2:00PM - 6:00PM'];
 
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
@@ -56,14 +56,13 @@ function onRetrieve() {
       pref_array.push(templist);
 
       MunkresAlgorithm(pref_array);
-      displayShifts();
   });
 }
 
 function displayShifts() {
   var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
                     "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
-                    "Billy", "Billy", "Billy", "Billy", "Billy", "Billy", "Billy",
+                    "Billy", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff",
                     "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
   var my_array = random_array();
   var shift_assignments = MunkresAlgorithm(my_array);
