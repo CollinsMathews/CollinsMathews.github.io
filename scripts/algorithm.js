@@ -5,9 +5,6 @@ var test = [
         [0.6, 0.1, 0.2, 0.1]
 ];
 
-
-var matrix = onRetrieve(); 
-
 function heatmap(A) {
         var n = A.length;
         var heat = []
