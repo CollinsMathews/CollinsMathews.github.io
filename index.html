@@ -16,23 +16,25 @@
         <h1>prefer.io</h1>
         <h3>Choose your schedule by allocating credits to the timeslots you want most!</h3>
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="employee_page.html">
-            <button id="employee_button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                EMPLOYEE
-            </button>
-        </a>
-        <a href="employer_page.html">
-            <button id="employer_button" class="mdl-button mdl-js-button mdl-js-ripple-effect" href="employer_page.html">
-                EMPLOYER
-            </button>
-        </a>
+        <div id="employ_buttons">
+            <a id="employee_link" href="employee_page.html">
+                <button id="employee_button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    EMPLOYEE
+                </button>
+            </a>
+            <a id="employer_link" href="employer_page.html">
+                <button id="employer_button" class="mdl-button mdl-js-button mdl-js-ripple-effect" href="employer_page.html">
+                    EMPLOYER
+                </button>
+            </a>
+        </div>
         <h4>Designed by Collins, Billy, Jeffrey, and Chang at UniHack 2019</h4>
     </div>
 </body>
 <script>
     var GoogleAuth; // Google Auth object.
     function initClient() {
-        gapi.client.init({
+        gapi.auth2.init({
             'apiKey': 'AIzaSyCyEf6lPHuFQM1chZyddCrrkahFeBr2t9g',
             'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
             'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
@@ -43,5 +45,23 @@
             // Listen for sign-in state changes.
             GoogleAuth.isSignedIn.listen(updateSigninStatus);
         });
+    }
+
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+
+        document.getElementById('employ_buttons').style.visibility = 'visible';
+        document.getElementsByClassName('g-signin2')[0].style['padding-top'] = '20px';
     }
 </script>

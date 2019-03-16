@@ -1,8 +1,8 @@
 td.shift_times_cell {
   text-align: center !important;
   width: 10%;
-  font-size: 1.2em;  
-  color:#373737;
+  font-size: 1.2em;
+  color: #373737;
   font-family: 'Cabin', sans-serif;
 }
 
@@ -10,42 +10,42 @@ td.shift_times_cell {
 td.shift_cell {
   width: 10%;
   height: 10%;
-  background-color: #ffd131;  
+  background-color: #ffd131;
   padding: 5em;
 }
 
 heat1 {
   width: 10%;
   height: 10%;
-  background-color: #ffd131 !important;  
+  background-color: #ffd131 !important;
   padding: 5em;
 }
 
 heat2 {
   width: 10%;
   height: 10%;
-  background-color: #FF5733 !important;  
+  background-color: #FF5733 !important;
   padding: 5em;
 }
 
 heat3 {
   width: 10%;
   height: 10%;
-  background-color: #C70039   !important;  
+  background-color: #C70039 !important;
   padding: 5em;
 }
 
 heat4 {
   width: 10%;
   height: 10%;
-  background-color: #900C3F   !important;  
+  background-color: #900C3F !important;
   padding: 5em;
 }
 
 heat5 {
   width: 10%;
   height: 10%;
-  background-color: #581845  !important;  
+  background-color: #581845 !important;
   padding: 5em;
 }
 
@@ -66,9 +66,9 @@ p.creds_remaining {
 .mdl-data-table tbody tr {
   position: relative;
   height: 48px;
-  transition-delay: 300s; 
+  transition-delay: 300s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property:  background-color !important ; 
+  transition-property: background-color !important;
 }
 
 
@@ -76,9 +76,9 @@ table#shift_table {
   width: 100%;
   margin: 0;
   height: 100%;
-  background-color:#e6e6e6 !important;
+  background-color: #e6e6e6 !important;
   border: 10px !important;
-  box-shadow: none !important;  
+  box-shadow: none !important;
   font-family: "cabin", sans-serif;
 
 }
@@ -87,9 +87,9 @@ table#employer_shift_table {
   width: 100%;
   margin: 0;
   height: 100%;
-  background-color:#e6e6e6 !important;
+  background-color: #e6e6e6 !important;
   border: 10px !important;
-  box-shadow: none !important;  
+  box-shadow: none !important;
 }
 
 
@@ -100,7 +100,7 @@ td.shift_cell {
 
 td.employer_shift_cell {
   background-color: #ffd131;
-  text-align: center !important; 
+  text-align: center !important;
   border-left: 1px solid black !important;
   border-right: 1px solid black !important;
   border-top: 1px solid black !important;
@@ -112,7 +112,7 @@ div#table_container {
   height: 80vh;
   background-color: #e6e6e6 !important;
   border: 10px !important;
-  box-shadow: none !important;  
+  box-shadow: none !important;
 }
 
 div#employer_table_container {
@@ -120,7 +120,7 @@ div#employer_table_container {
   height: 80vh;
   background-color: #e6e6e6 !important;
   border: 10px !important;
-  box-shadow: none !important;  
+  box-shadow: none !important;
   text-align: center;
 }
 
@@ -128,8 +128,8 @@ div#employer_table_container {
 th#days_cell {
   text-align: center !important;
   vertical-align: bottom !important;
-  font-size: 2em;  
-  color:#373737;
+  font-size: 2em;
+  color: #373737;
   font-family: 'Cabin', sans-serif;
 }
 
@@ -142,14 +142,14 @@ div#submit_button_container {
   vertical-align: center !important;
   height: 100px;
   background-color: #e6e6e6;
-  
+
 }
 
 button#submit_button:hover {
-  transition-duration: 0.2s; 
+  transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property:  background-color !important ; 
-  background-color:#d56900;
+  transition-property: background-color !important;
+  background-color: #d56900;
 
 }
 
@@ -168,7 +168,7 @@ button#employer_button {
 body#main_page_body {
   background-color: #373737;
   text-align: center;
-  
+
 }
 
 div#main_page_button_wrapper {
@@ -194,7 +194,7 @@ h4 {
   color: white;
   font-family: "cabin", sans-serif;
   font-size: 1em;
-  margin-top: 100px;  
+  margin-top: 100px;
 }
 
 
@@ -219,7 +219,7 @@ button.prefer_io_button:hover {
 
 button#demo-show-toast {
   width: 100%;
-  background-color: #ffd131; 
+  background-color: #ffd131;
   border: none;
   color: #373737;
   padding: 10px 40px;
@@ -230,10 +230,10 @@ button#demo-show-toast {
   font-size: 30px;
   font-family: "cabin", sans-serif;
   height: 50px;
-  box-shadow: none !important;  
+  box-shadow: none !important;
 }
 
-button#submit_button{
+button#submit_button {
   width: 200px;
   background-color: #ffd131;
   border: none;
@@ -258,7 +258,12 @@ input#no_of_shift.mdl-textfield__input {
 }
 
 .g-signin2 {
-  padding-top: 20px;
+  padding-top: 56px;
   padding-bottom: 20px;
-  padding-left: 190px;
+  padding-left: 380px;
+}
+
+#employ_buttons {
+  visibility: hidden;
+  height: 0px;
 }
