@@ -6,10 +6,8 @@ var image = localStorage.getItem('image');
 
 function handleClientLoad() {
 
-    gapi.client.init({
-        'apiKey': 'YOUR_API_KEY',
-        'clientId': 'YOUR_CLIENT_ID',
-        'scope': SCOPE
+    gapi.auth2.init({
+        'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
     }).then(function () {
       GoogleAuth = gapi.auth2.getAuthInstance();
 
