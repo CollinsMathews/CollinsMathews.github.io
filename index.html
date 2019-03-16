@@ -32,21 +32,6 @@
     </div>
 </body>
 <script>
-    var GoogleAuth; // Google Auth object.
-    function initClient() {
-        gapi.auth2.init({
-            'apiKey': 'AIzaSyCyEf6lPHuFQM1chZyddCrrkahFeBr2t9g',
-            'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
-            'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-            'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
-        }).then(function () {
-            GoogleAuth = gapi.auth2.getAuthInstance();
-
-            // Listen for sign-in state changes.
-            GoogleAuth.isSignedIn.listen(updateSigninStatus);
-        });
-    }
-
     function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -63,3 +48,4 @@
         document.getElementsByClassName('g-signin2')[0].style['padding-top'] = '20px';
     }
 </script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async="" defer=""></script>

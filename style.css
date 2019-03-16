@@ -258,12 +258,33 @@ input#no_of_shift.mdl-textfield__input {
 }
 
 .g-signin2 {
-  padding-top: 56px;
+  padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 380px;
 }
 
-#employ_buttons {
-  visibility: hidden;
-  height: 0px;
+#animated-example {
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  animation-play-state: paused;
+}
+
+
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }

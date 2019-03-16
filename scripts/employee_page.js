@@ -1,24 +1,44 @@
 var shift_table_string = '';
-var creds_remaining = 1000;
+var creds_init = 1000;
+var creds_remaining = creds_init;
 var name = localStorage.getItem('name');
 var image = localStorage.getItem('image');
+
+function init() {
+    gapi.auth2.init({
+        'apiKey': 'AIzaSyCyEf6lPHuFQM1chZyddCrrkahFeBr2t9g',
+        'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
+        'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+    }).then(function () {
+        GoogleAuth = gapi.auth2.getAuthInstance();
+
+        // Listen for sign-in state changes.
+        GoogleAuth.isSignedIn.listen(updateSigninStatus);
+    });
+}
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
 
-document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_remaining + " credits left.";
+document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_init + " credits left.";
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
     if (i == 0) {
-        shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
-            '<form action="#">\
+        if (name != "null") {
+            shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">You are logged in as: <br/><br/>' + name;
+        } else {
+            shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
+                '<form action="#">\
         <div class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
-          <label class="mdl-textfield__label" for="name_input">' + name + ' ...</label>\
+          <label class="mdl-textfield__label" for="name_input">' + 'Name...' + ' ...</label>\
         </div>\
-      </form>' +
-            '<form action="#" id="credit_input">\
+      </form>';
+        }
+
+        shift_table_string += '<form action="#" id="credit_input">\
       <div class="mdl-textfield mdl-js-textfield">\
       <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="no_of_shift">\
       <label class="mdl-textfield__label" for="no_of_shift">No of Shifts....</label>\
@@ -48,6 +68,11 @@ for (var i = 0; i < shift_times.length; i++) {
 
 
 document.getElementById('shift_table').innerHTML = shift_table_string;
+
+
+localStorage.clear('name');
+localStorage.clear('image');
+localStorage.clear('id_token');
 
 // Set the configuration for your app
 // TODO: Replace with your project's config object
@@ -81,7 +106,8 @@ function onSubmit() {
             shift_array.push({
                 day: day_on,
                 shift_time: shift_time_on,
-                credits: Number(credits_used)
+                credits: Number(credits_used),
+                credits_remaining: creds_remaining
             });
         }
     }
@@ -120,7 +146,39 @@ function onSubmit() {
         };
 
         firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
+
+        var animated_style = document.getElementsByClassName('animated')[0].style;
+        animated_style['background-color'] = 'white';
+        animated_style['background-repeat'] = 'no-repeat';
+        animated_style['background-position'] = 'left top';
+        animated_style['padding-top'] = '95px';
+        animated_style['margin-bottom'] = '60px';
+        animated_style['-webkit-animation-duration'] = '5s';
+        animated_style['animation-duration'] = '5s';
+        animated_style['-webkit-animation-fill-mode'] = 'both';
+        animated_style['animation-fill-mode'] = 'both';
+
+        var popup_style = document.getElementById('animated-example').style;
+        popup_style['z-index'] = 1
+        popup_style['animation-play-state'] = 'running';
+
+        document.getElementById('animated-example').innerText = 'prefer.io will now log out.'
+        animated_style['text-align'] = 'center';
+        animated_style['font-size'] = '5em';
+        animated_style['padding-top'] = '40%';
+
+        setTimeout(function () {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+            window.href('index.html');
+
+        }, 2000);
+
     }
+
+
 }
 
 function credChange(cell_id) {
@@ -136,7 +194,7 @@ function credChange(cell_id) {
         }
     }
 
-    if ((Number(creds_remaining) - Number(sum)) < 0) {
+    if ((Number(creds_init) - Number(sum)) < 0) {
         alert("You Cannot Use More Credits Than You Have!");
         document.getElementById(cell_id).value = "";
 
@@ -152,8 +210,10 @@ function credChange(cell_id) {
             }
         }
     }
-    
-    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + (Number(creds_remaining) - Number(sum)) + " credits left.";
+
+    creds_remaining = (Number(creds_init) - Number(sum))
+
+    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_remaining + " credits left.";
 
 }
 
