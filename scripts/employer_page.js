@@ -1,3 +1,4 @@
+
 shift_table_string = '';
 
 
@@ -52,14 +53,15 @@ var pref_array = [];
 
 function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
-      var employee_shift_pref = user_shift_data_object.shift_data();
+    console.log(user_shift_data_object.val());
+      var employee_shift_pref = user_shift_data_object.val().shift_data;
       var templist = [];
       for (var i = 0; i < 28; i++) {
-        templist.push(employee_shift_pref[i].credits());
+        templist.push(employee_shift_pref[i].credits);
       }
       pref_array.push(templist);
-  });
 
-  MunkresAlgorithm(pref_array)
+      MunkresAlgorithm(pref_array);
+  });
 }
 
