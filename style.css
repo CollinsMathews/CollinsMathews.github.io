@@ -21,9 +21,9 @@ td.shift_cell:hover {
 p.creds_remaining {
   color: #373737;
   font-family: "cabin", sans-serif;
-  font-size: 4em;
+  font-size: 2em;
   text-align: center;
-  vertical-align: bottom;
+
 }
 
 
@@ -50,7 +50,7 @@ table#shift_table {
   margin: 0;
   height: 100%;
   background-color:#e6e6e6 !important;
-  border-width: 0px !important;
+  border: 10px !important;
   box-shadow: none !important;  
   font-family: "cabin", sans-serif;
 
@@ -61,38 +61,46 @@ table#employer_shift_table {
   margin: 0;
   height: 100%;
   background-color:#e6e6e6 !important;
-  border-width: 10px !important;
-  box-shadow: 10px !important;  
-  border-left: thick solid #00843D;
+  border: 10px !important;
+  box-shadow: none !important;  
   
 }
 
 
 
 td.shift_cell {
-  border: 0 !important;
+  border: none !important;
 }
 
 td.employer_shift_cell {
-  border-width: 1px !important;
-  border-color: black !important;  
+  border: 10px !important;
+  border-color: red !important;  
   background-color: #ffd131;
   text-align: center !important; 
-  border-left: thick solid #00843D;
-  border-right: thick solid black;
 }
 
 div#table_container {
   padding: 5% 10% 0 10%;
   height: 80vh;
   background-color: #e6e6e6 !important;
+  border: 10px !important;
+  box-shadow: none !important;  
+}
+
+div#employer_table_container {
+  padding: 5% 10% 0 10%;
+  height: 80vh;
+  background-color: #e6e6e6 !important;
+  border: 10px !important;
+  box-shadow: none !important;  
+  text-align: center;
 }
 
 
 th#days_cell {
   text-align: center !important;
-  vertical-align: bottom !important;
-  font-size: 1.7em;  
+  vertical-align: middle !important;
+  font-size: 1.2em;  
   color:#373737;
   font-family: 'Cabin', sans-serif;
 }
@@ -106,6 +114,7 @@ div#submit_button_container {
   vertical-align: center !important;
   height: 100px;
   background-color: #e6e6e6;
+  margin: 
   
 }
 
@@ -114,26 +123,19 @@ button#submit_button:hover {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property:  background-color !important ; 
   background-color:#00843D;
-  border-color:red;
+
 }
 
 button#employee_button {
 
   background-color: #ffd131;
   font-family: "cabin", sans-serif;
-  text-align: center; 
-  vertical-align: center;
-  padding: 2em 3em 5em 3em;
-  
 
 }
 
 button#employer_button {
   background-color: #ffd131;
   font-family: "cabin", sans-serif;
-  text-align: center !important;
-  vertical-align: center ! important;
-  padding: 2em 3em 5em 3em
 }
 
 body#main_page_body {
@@ -156,20 +158,6 @@ h1 {
 }
 
 
-h3 {
-  color: white;
-  font-family: "cabin", sans-serif;
-  font-size: 2em;
-}
-
-h4 {
-  color: white;
-  font-family: "cabin", sans-serif;
-  font-size: 1em;
-  margin-top: 100px;
-}
-
-
 button#prefer_io_button {
   color: #373737;
   font-family: "cabin", sans-serif !important;
@@ -189,16 +177,16 @@ button.prefer_io_button:hover {
 
 
 
-button#demo-show-toast {
-  width: 200px;
-  background-color: #ffd131;
+button#submit_button {
+  width: 100%;
+  background-color: #ffd131; 
   border: none;
   color: #373737;
+  padding: 15px 40px;
   margin: 70px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
+  font-size: 30px;
   font-family: "cabin", sans-serif;
-  height: 50px;
 }
