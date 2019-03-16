@@ -5,6 +5,23 @@ var name = localStorage.getItem('name');
 var image = localStorage.getItem('image');
 var GoogleAuth;
 
+// Set the configuration for your app
+// TODO: Replace with your project's config object
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCllerIGsbDSRfbkXKBfQvMLnHqC_vUZwI",
+    authDomain: "prefers-12cd2.firebaseapp.com",
+    databaseURL: "https://prefers-12cd2.firebaseio.com",
+    projectId: "prefers-12cd2",
+    storageBucket: "prefers-12cd2.appspot.com",
+    messagingSenderId: "412064070833"
+};
+firebase.initializeApp(config);
+
+// Get a reference to the database service
+var database = firebase.database();
+
+
 function init() {
     gapi.load('auth2', function () {
         handleClientLoad()
@@ -55,6 +72,11 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
 
 shift_table_string += '</tr></thead>';
 
+firebase.database().ref('User').orderByChild("user").equalTo(name).on("child_added", function (user_shift_data_object) {
+    creds_remaining += user_shift_data_object.val().credits_remaining;
+    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_init + " credits left.";
+});
+
 
 for (var i = 0; i < shift_times.length; i++) {
     shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
@@ -77,22 +99,6 @@ localStorage.clear('name');
 localStorage.clear('image');
 localStorage.clear('id_token');
 
-// Set the configuration for your app
-// TODO: Replace with your project's config object
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyCllerIGsbDSRfbkXKBfQvMLnHqC_vUZwI",
-    authDomain: "prefers-12cd2.firebaseapp.com",
-    databaseURL: "https://prefers-12cd2.firebaseio.com",
-    projectId: "prefers-12cd2",
-    storageBucket: "prefers-12cd2.appspot.com",
-    messagingSenderId: "412064070833"
-};
-firebase.initializeApp(config);
-
-// Get a reference to the database service
-var database = firebase.database();
-
 function onSubmit() {
     var credits_used;
     shift_array = [];
@@ -110,7 +116,6 @@ function onSubmit() {
                 day: day_on,
                 shift_time: shift_time_on,
                 credits: Number(credits_used),
-                credits_remaining: creds_remaining
             });
         }
     }
@@ -149,7 +154,8 @@ function onSubmit() {
         var JSON_send = {
             user: username,
             shift_data: shift_array,
-            no_of_shift: Number(no_of_shifts)
+            no_of_shift: Number(no_of_shifts),
+            credits_remaining: creds_remaining
         };
 
         firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
