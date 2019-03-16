@@ -3,6 +3,7 @@ var creds_init = 1000;
 var creds_remaining = creds_init;
 var name = localStorage.getItem('name');
 var image = localStorage.getItem('image');
+var GoogleAuth;
 
 function init() {
     gapi.load('auth2', function () {
@@ -16,13 +17,6 @@ function handleClientLoad() {
         'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
     }).then(function () {
         GoogleAuth = gapi.auth2.getAuthInstance();
-
-        // Listen for sign-in state changes.
-        GoogleAuth.isSignedIn.listen(updateSigninStatus);
-
-        // Handle initial sign-in state. (Determine if user is already signed in.)
-        var user = GoogleAuth.currentUser.get();
-        setSigninStatus();
     });
 }
 
@@ -181,8 +175,7 @@ function onSubmit() {
         animated_style['padding-top'] = '40%';
 
         setTimeout(function () {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
+            GoogleAuth.signOut().then(function () {
                 console.log('User signed out.');
             });
             window.href('index.html');
