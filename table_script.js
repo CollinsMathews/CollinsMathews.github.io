@@ -1,11 +1,21 @@
 shift_table_string = '';
 
+
 var days_of_week = ['', 'Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 var shift_times = ['8:00AM - 12:00PM', '10:00PM - 2:00PM', '12:00PM - 4:00PM', '2:00PM - 6:00PM'];
 
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < 8; i++) {
-    shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i] + '</th>';
+    if (i == 0) {
+        shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + '<form action="#">\
+        <div class="mdl-textfield mdl-js-textfield">\
+          <input class="mdl-textfield__input" type="text" id="name_input">\
+          <label class="mdl-textfield__label" for="name_input">Name...</label>\
+        </div>\
+      </form>' + '</th>';
+    } else {
+        shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' + days_of_week[i] + '</th>';
+    }
 }
 
 shift_table_string += '</tr></thead>';
@@ -45,12 +55,12 @@ var database = firebase.database();
 
 function onSubmit() {
     var credits_used;
-    shift_array = []
+    shift_array = [];
     for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 7; j++) {
-            var day_on = days_of_week[j + 1]
-            var shift_time_on = shift_times[i]
-            
+            var day_on = days_of_week[j + 1];
+            var shift_time_on = shift_times[i];
+
             if (document.getElementById(day_on + '_' + shift_time_on) == undefined || (credits_used = document.getElementById(day_on + '_' + shift_time_on).value) == "") {
                 credits_used = 0;
             }
@@ -60,14 +70,26 @@ function onSubmit() {
                 day: day_on,
                 shift_time: shift_time_on,
                 credits: credits_used
-            })
+            });
         }
     }
 
-    var JSON_send = {
-        user: "USER 1",
-        shift_data: shift_array
+    var username;
+
+    try {
+        username = document.getElementById("name_input").value;
+    } catch (err) {
+        username = "DID NOT PUT USERNAME";
     }
 
-    firebase.database().ref("USER 1").set(JSON_send);
+    var JSON_send = {
+        user: username,
+        shift_data: shift_array
+    };
+
+    firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
+    firebase.database().ref("User").orderByKey().on("child_added", function(snapshot) {
+        var a = console.log(snapshot.val());
+        b = 2+2;
+    });
 }
