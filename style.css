@@ -37,14 +37,6 @@ p.creds_remaining {
 }
 
 
-
-th.days_cell {
-  text-align: center;
-  width: 100%;
-  color: #373737;
-  
-}
-
 table#shift_table {
   width: 100%;
   margin: 0;
@@ -99,8 +91,8 @@ div#employer_table_container {
 
 th#days_cell {
   text-align: center !important;
-  vertical-align: middle !important;
-  font-size: 1.2em;  
+  vertical-align: bottom !important;
+  font-size: 2em;  
   color:#373737;
   font-family: 'Cabin', sans-serif;
 }
@@ -167,7 +159,7 @@ h4 {
   color: white;
   font-family: "cabin", sans-serif;
   font-size: 1em;
-  margin-top: 100px;
+  margin-top: 100px;  
 }
 
 
