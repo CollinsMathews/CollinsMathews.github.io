@@ -18,6 +18,14 @@ td.shift_cell:hover {
   background-color: #00843d;
 }
 
+p.creds_remaining {
+  color: #373737;
+  font-family: "cabin", sans-serif;
+  font-size: 2em;
+  text-align: center;
+
+}
+
 
 
 .mdl-data-table tbody tr {
@@ -74,8 +82,9 @@ div.mdl-textfield {
 div#submit_button_container {
   padding: 2% 40% 5% 40%;
   vertical-align: center !important;
-  height: 20px;
+  height: 100px;
   background-color: #e6e6e6;
+  margin: 
   
 }
 
@@ -143,7 +152,8 @@ button#submit_button {
   background-color: #ffd131; 
   border: none;
   color: #373737;
-  padding: 15px 32px;
+  padding: 15px 40px;
+  margin: 70px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
