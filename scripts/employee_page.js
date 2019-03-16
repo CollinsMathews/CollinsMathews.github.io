@@ -36,7 +36,7 @@ for (var i = 0; i < shift_times.length; i++) {
     for (var j = 0; j < days_of_week.length; j++) {
         shift_table_string += '<td class="shift_cell">' + '<form action="#" id="credit_input">\
         <div class="mdl-textfield mdl-js-textfield">\
-        <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input" type="text" oninput="credChange()" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
+        <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input shift_cell" type="text" oninput="credChange()" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
         <label class="mdl-textfield__label" for="sample2">Credits...</label>\
         </div>\
         </form>' + '</td>';
@@ -133,13 +133,15 @@ function credChange() {
     document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + (Number(creds_remaining) - Number(sum)) + " credits left.";
 }
 
-document.getElementsByClassName('numbersonly').addEventListener('keydown', function(e) {
-    var key   = e.keyCode ? e.keyCode : e.which;
+for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
+    document.getElementsByClassName('shift_cell')[i].addEventListener('keydown', function (e) {
+        var key = e.keyCode ? e.keyCode : e.which;
 
-    if (!( [8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
-         (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
-         (key >= 35 && key <= 40) ||
-         (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
-         (key >= 96 && key <= 105)
-       )) e.preventDefault();
-});
+        if (!([8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
+                (key == 65 && (e.ctrlKey || e.metaKey)) ||
+                (key >= 35 && key <= 40) ||
+                (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
+                (key >= 96 && key <= 105)
+            )) e.preventDefault();
+    });
+}
