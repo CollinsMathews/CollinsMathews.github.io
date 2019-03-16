@@ -52,7 +52,18 @@ table#shift_table {
   background-color:#e6e6e6 !important;
   border: 10px !important;
   box-shadow: none !important;  
+  font-family: "cabin", sans-serif;
 
+}
+
+table#employer_shift_table {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  background-color:#e6e6e6 !important;
+  border: 10px !important;
+  box-shadow: none !important;  
+  
 }
 
 
@@ -62,9 +73,10 @@ td.shift_cell {
 }
 
 td.employer_shift_cell {
-  border: 1px !important;
+  border: 10px !important;
   border-color: red !important;  
   background-color: #ffd131;
+  text-align: center !important; 
 }
 
 div#table_container {
@@ -73,6 +85,15 @@ div#table_container {
   background-color: #e6e6e6 !important;
   border: 10px !important;
   box-shadow: none !important;  
+}
+
+div#employer_table_container {
+  padding: 5% 10% 0 10%;
+  height: 80vh;
+  background-color: #e6e6e6 !important;
+  border: 10px !important;
+  box-shadow: none !important;  
+  text-align: center;
 }
 
 
@@ -141,12 +162,12 @@ button#prefer_io_button {
   color: #373737;
   font-family: "cabin", sans-serif !important;
   font-size: 2em !important;
-  border: none;
   background-color: inherit;
   padding: 0;
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
+
 }
 
 button.prefer_io_button:hover {
