@@ -14,6 +14,41 @@ td.shift_cell {
   padding: 5em;
 }
 
+heat1 {
+  width: 10%;
+  height: 10%;
+  background-color: #ffd131 !important;  
+  padding: 5em;
+}
+
+heat2 {
+  width: 10%;
+  height: 10%;
+  background-color: #FF5733 !important;  
+  padding: 5em;
+}
+
+heat3 {
+  width: 10%;
+  height: 10%;
+  background-color: #C70039   !important;  
+  padding: 5em;
+}
+
+heat4 {
+  width: 10%;
+  height: 10%;
+  background-color: #900C3F   !important;  
+  padding: 5em;
+}
+
+heat5 {
+  width: 10%;
+  height: 10%;
+  background-color: #581845  !important;  
+  padding: 5em;
+}
+
 td.shift_cell:hover {
   background-color: #00843d;
 }
@@ -106,7 +141,6 @@ div#submit_button_container {
   vertical-align: center !important;
   height: 100px;
   background-color: #e6e6e6;
-  margin: 
   
 }
 
@@ -114,7 +148,7 @@ button#submit_button:hover {
   transition-duration: 0.2s; 
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property:  background-color !important ; 
-  background-color:#00843D;
+  background-color:#d56900;
 
 }
 
