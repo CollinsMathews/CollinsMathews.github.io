@@ -1,5 +1,7 @@
-shift_table_string = '';
-creds_remaining = 1000;
+var shift_table_string = '';
+var creds_remaining = 1000;
+var name = localStorage.getItem('name');
+var image = localStorage.getItem('image');
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
@@ -13,7 +15,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
             '<form action="#">\
         <div class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
-          <label class="mdl-textfield__label" for="name_input">Name...</label>\
+          <label class="mdl-textfield__label" for="name_input">' + name + ' ...</label>\
         </div>\
       </form>' +
             '<form action="#" id="credit_input">\
