@@ -14,23 +14,23 @@ td.shift_cell {
   padding: 5em;
 }
 
-td#shift_cell.heat1 {
+td.heat1 {
   background-color: #ffd131 !important;
 }
 
-td#shift_cell.heat2 {
+td.heat2 {
   background-color: #FF5733 !important;
 }
 
-td#shift_cell.heat3 {
+td.heat3 {
   background-color: #C70039 !important;
 }
 
-td#shift_cell.heat4 {
+td.heat4 {
   background-color: #900C3F !important;
 }
 
-td#shift_cell.heat5 {
+td.heat5 {
   background-color: #581845 !important;
 }
 
