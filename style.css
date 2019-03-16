@@ -6,11 +6,16 @@ td.shift_times_cell {
   font-family: 'Cabin', sans-serif;
 }
 
+
 td.shift_cell {
   width: 10%;
   height: 10%;
-  border: 2px;
-  border-color: black;
+  background-color: #fad420;  
+  padding: 5em;
+}
+
+td.shift_cell:hover {
+  background-color: #2d8a00;
 }
 
 th.days_cell {
@@ -19,18 +24,21 @@ th.days_cell {
   color: white;
   
 }
+.mdl-data-table tbody tr:hover {
+  background-color: red; }
 
 table#shift_table {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   height: 100%;
-  background-color: #191919;
-}
+  background-color:#191919 !important;
+  border: none;
 
+}
 div#table_container {
-  padding: 2% 10%;
+  padding: 10% 10% 0 10%;
   height: 80vh;
-  background-color: #191919;
+  background-color: #191919 !important;
 }
 
 th#days_cell {
@@ -46,10 +54,22 @@ div.mdl-textfield {
 }
 
 div#submit_button_container {
-  padding: 2% 10%;
+  padding: 2% 40% 5% 40%;
+  vertical-align: center !important;
   height: 20px;
+  background-color: #191919;
+  
 }
 
 button#submit_button {
   width: 100%;
+  background-color: #fad420; 
+  border: none;
+  color: #191919;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "cabin", sans-serif;
 }
