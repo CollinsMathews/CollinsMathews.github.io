@@ -92,6 +92,8 @@ function onSubmit() {
     try {
         if ((username = document.getElementById("name_input").value) == "") {
             alert("Please Enter A Name!");
+        } else {
+            username_valid_flag = 1;
         }
     } catch (err) {
         alert("Please Enter A Name!");
@@ -100,6 +102,8 @@ function onSubmit() {
     try {
         if ((no_of_shifts = document.getElementById("no_of_shift").value) == "") {
             alert("Please Enter How Many Shifts You Want!");
+        } else {
+            no_of_shifts_flag = 1;
         }
     } catch (err) {
         alert("Please Enter How Many Shifts You Want!");
