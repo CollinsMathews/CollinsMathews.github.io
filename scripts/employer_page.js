@@ -56,14 +56,13 @@ function onRetrieve() {
       pref_array.push(templist);
 
       MunkresAlgorithm(pref_array);
-      displayShifts();
   });
 }
 
 function displayShifts() {
   var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
                     "Collins", "Collins", "Collins", "Collins", "Collins", "Collins", "Collins",
-                    "Billy", "Billy", "Billy", "Billy", "Billy", "Billy", "Billy",
+                    "Billy", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff",
                     "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff", "Jeff"];
   var my_array = random_array();
   var shift_assignments = MunkresAlgorithm(my_array);
