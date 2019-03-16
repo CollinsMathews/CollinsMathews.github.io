@@ -103,6 +103,15 @@ function displayShifts(my_array, name_array) {
 
 function displayHeat(my_array) {
   var heat = heatmap(my_array);
+  max_heat = Math.max(heat);
+  
+for (var i = 0; i < heat.length; i++) {
+  heat[i] = Math.round(heat[i]/max_heat);
+}
+
+console.log(heat);
+
+
   for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
     console.log(i);
     var cell = document.getElementById("shift_cell" + String(i))
