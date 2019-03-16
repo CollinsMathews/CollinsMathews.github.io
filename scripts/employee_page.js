@@ -73,7 +73,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
 shift_table_string += '</tr></thead>';
 
 firebase.database().ref('User').orderByChild("user").equalTo(name).on("child_added", function (user_shift_data_object) {
-    creds_remaining += user_shift_data_object.val().credits_remaining;
+    creds_init += user_shift_data_object.val().credits_remaining;
     document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_remaining + " credits left.";
 });
 
@@ -209,7 +209,7 @@ function credChange(cell_id) {
     if ((Number(creds_remaining) - Number(sum)) < 0) {
         alert("You Cannot Use More Credits Than You Have!");
         document.getElementById(cell_id).value = "";
-
+        
         sum = 0
         for (var i = 0; i < days_of_week.length; i++) {
             for (var j = 0; j < shift_times.length; j++) {
@@ -223,7 +223,7 @@ function credChange(cell_id) {
         }
     }
 
-    creds_remaining = (Number(creds_remaining) - Number(sum))
+    creds_remaining = (Number(creds_init) - Number(sum))
 
     document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_remaining + " credits left.";
 
