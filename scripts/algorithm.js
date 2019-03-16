@@ -15,9 +15,6 @@ function heatmap(A) {
         return heat
 }
 
-var matrix = [[1, 2, 3],
-              [1, 2, 3],
-              [1, 2, 3]];
 var matrix = pref_array;
 
 min_matrix = matrix.map(value => value.map(value => -value));
