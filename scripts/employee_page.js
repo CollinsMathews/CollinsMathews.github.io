@@ -1,22 +1,64 @@
-shift_table_string = '';
-creds_remaining = 1000;
+var shift_table_string = '';
+var creds_init = 1000;
+var creds_remaining = creds_init;
+var name = localStorage.getItem('name');
+var image = localStorage.getItem('image');
+var GoogleAuth;
+
+// Set the configuration for your app
+// TODO: Replace with your project's config object
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCllerIGsbDSRfbkXKBfQvMLnHqC_vUZwI",
+    authDomain: "prefers-12cd2.firebaseapp.com",
+    databaseURL: "https://prefers-12cd2.firebaseio.com",
+    projectId: "prefers-12cd2",
+    storageBucket: "prefers-12cd2.appspot.com",
+    messagingSenderId: "412064070833"
+};
+firebase.initializeApp(config);
+
+// Get a reference to the database service
+var database = firebase.database();
+
+
+function init() {
+    gapi.load('auth2', function () {
+        handleClientLoad()
+    })
+}
+
+function handleClientLoad() {
+
+    gapi.auth2.init({
+        'clientId': '19221272441-1st3n9ndaold7hrr23gp9r842e0lj5c8.apps.googleusercontent.com',
+    }).then(function () {
+        GoogleAuth = gapi.auth2.getAuthInstance();
+    });
+}
+
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
 
-document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_remaining + " credits left.";
+document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_init + " credits left.";
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
     if (i == 0) {
-        shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
-            '<form action="#">\
+        if (name != "null") {
+            shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">You are logged in as: <br/><br/><div id="name_input">' + name + '</div>';
+        } else {
+            shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
+                '<form action="#">\
         <div class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
-          <label class="mdl-textfield__label" for="name_input">Name...</label>\
+          <label class="mdl-textfield__label" for="name_input">' + 'Name...' + ' ...</label>\
         </div>\
-      </form>' +
-            '<form action="#" id="credit_input">\
+      </form>';
+        }
+
+        shift_table_string += '<form action="#" id="credit_input">\
       <div class="mdl-textfield mdl-js-textfield">\
       <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="no_of_shift">\
       <label class="mdl-textfield__label" for="no_of_shift">No of Shifts....</label>\
@@ -29,6 +71,11 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
 }
 
 shift_table_string += '</tr></thead>';
+
+firebase.database().ref('User').orderByChild("user").equalTo(name).on("child_added", function (user_shift_data_object) {
+    creds_init += user_shift_data_object.val().credits_remaining;
+    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_init + " credits left.";
+});
 
 
 for (var i = 0; i < shift_times.length; i++) {
@@ -47,21 +94,10 @@ for (var i = 0; i < shift_times.length; i++) {
 
 document.getElementById('shift_table').innerHTML = shift_table_string;
 
-// Set the configuration for your app
-// TODO: Replace with your project's config object
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyCllerIGsbDSRfbkXKBfQvMLnHqC_vUZwI",
-    authDomain: "prefers-12cd2.firebaseapp.com",
-    databaseURL: "https://prefers-12cd2.firebaseio.com",
-    projectId: "prefers-12cd2",
-    storageBucket: "prefers-12cd2.appspot.com",
-    messagingSenderId: "412064070833"
-};
-firebase.initializeApp(config);
 
-// Get a reference to the database service
-var database = firebase.database();
+localStorage.clear('name');
+localStorage.clear('image');
+localStorage.clear('id_token');
 
 function onSubmit() {
     var credits_used;
@@ -79,7 +115,7 @@ function onSubmit() {
             shift_array.push({
                 day: day_on,
                 shift_time: shift_time_on,
-                credits: Number(credits_used)
+                credits: Number(credits_used),
             });
         }
     }
@@ -90,11 +126,15 @@ function onSubmit() {
     var no_of_shifts_flag = 0;
 
     try {
-        if ((username = document.getElementById("name_input").value) == "") {
+        if (name != "null") {
+            username = name;
+            username_valid_flag = 1;
+        } else if ((username = document.getElementById("name_input").value) == "") {
             alert("Please Enter A Name!");
         } else {
             username_valid_flag = 1;
         }
+
     } catch (err) {
         alert("Please Enter A Name!");
     }
@@ -114,11 +154,43 @@ function onSubmit() {
         var JSON_send = {
             user: username,
             shift_data: shift_array,
-            no_of_shift: Number(no_of_shifts)
+            no_of_shift: Number(no_of_shifts),
+            credits_remaining: creds_remaining
         };
 
         firebase.database().ref("User").child(JSON_send.user).set(JSON_send);
+
+        var animated_style = document.getElementsByClassName('animated')[0].style;
+        animated_style['background-color'] = 'white';
+        animated_style['background-repeat'] = 'no-repeat';
+        animated_style['background-position'] = 'left top';
+        animated_style['padding-top'] = '95px';
+        animated_style['margin-bottom'] = '60px';
+        animated_style['-webkit-animation-duration'] = '5s';
+        animated_style['animation-duration'] = '5s';
+        animated_style['-webkit-animation-fill-mode'] = 'both';
+        animated_style['animation-fill-mode'] = 'both';
+
+        var popup_style = document.getElementById('animated-example').style;
+        popup_style['z-index'] = 1
+        popup_style['animation-play-state'] = 'running';
+
+        document.getElementById('animated-example').innerText = 'prefer.io will now log out.'
+        animated_style['text-align'] = 'center';
+        animated_style['font-size'] = '5em';
+        animated_style['padding-top'] = '40%';
+
+        setTimeout(function () {
+            GoogleAuth.signOut().then(function () {
+                console.log('User signed out.');
+            });
+            window.location.href = 'index.html';
+
+        }, 2000);
+
     }
+
+
 }
 
 function credChange(cell_id) {
@@ -137,7 +209,7 @@ function credChange(cell_id) {
     if ((Number(creds_remaining) - Number(sum)) < 0) {
         alert("You Cannot Use More Credits Than You Have!");
         document.getElementById(cell_id).value = "";
-
+        
         sum = 0
         for (var i = 0; i < days_of_week.length; i++) {
             for (var j = 0; j < shift_times.length; j++) {
@@ -150,8 +222,10 @@ function credChange(cell_id) {
             }
         }
     }
-    
-    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + (Number(creds_remaining) - Number(sum)) + " credits left.";
+
+    creds_remaining = (Number(creds_init) - Number(sum))
+
+    document.getElementsByClassName('creds_remaining')[0].innerHTML = "You have " + creds_remaining + " credits left.";
 
 }
 
@@ -165,5 +239,12 @@ for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
                 (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
                 (key >= 96 && key <= 105)
             )) e.preventDefault();
+    });
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
     });
 }
