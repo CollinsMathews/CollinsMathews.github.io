@@ -1,8 +1,5 @@
 var shift_table_string = '';
-var creds_init = 1000;
-var creds_remaining = creds_init;
 var name = localStorage.getItem('name');
-var image = localStorage.getItem('image');
 var GoogleAuth;
 
 // Set the configuration for your app
@@ -40,9 +37,8 @@ function handleClientLoad() {
 
 
 var days_of_week = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
-var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM'];
+var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM', '8:00PM - 11:00PM'];
 
-document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_init + " credits left.";
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
     if (i == 0) {
@@ -71,6 +67,10 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
 }
 
 shift_table_string += '</tr></thead>';
+
+var creds_init = 1000;
+var creds_remaining = creds_init;
+document.getElementsByClassName('creds_remaining')[0].innerHTML += "You have " + creds_init + " credits left.";
 
 firebase.database().ref('User').orderByChild("user").equalTo(name).on("child_added", function (user_shift_data_object) {
     creds_init += user_shift_data_object.val().credits_remaining;
@@ -194,7 +194,7 @@ function onSubmit() {
 }
 
 function credChange(cell_id) {
-    var sum = 0
+    var sum = 0;
     for (var i = 0; i < days_of_week.length; i++) {
         for (var j = 0; j < shift_times.length; j++) {
             if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
@@ -206,18 +206,17 @@ function credChange(cell_id) {
         }
     }
 
-    if ((Number(creds_remaining) - Number(sum)) < 0) {
+    if ((Number(creds_init) - Number(sum)) < 0) {
         alert("You Cannot Use More Credits Than You Have!");
         document.getElementById(cell_id).value = "";
-        
-        sum = 0
+
+        sum = 0;
         for (var i = 0; i < days_of_week.length; i++) {
             for (var j = 0; j < shift_times.length; j++) {
                 if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
                     sum += 0;
                 } else {
                     sum += Number(the_value);
-
                 }
             }
         }
