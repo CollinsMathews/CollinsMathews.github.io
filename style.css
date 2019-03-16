@@ -12,6 +12,7 @@ td.shift_cell {
   height: 10%;
   background-color: #ffd131;
   padding: 5em;
+  text-align: center;
 }
 
 td.heat1 {
@@ -26,7 +27,11 @@ td.heat3 {
   background-color: #C70039 !important;
 }
 
+<<<<<<< HEAD
+td.heat4{
+=======
 td.heat4 {
+>>>>>>> 18a1011f898798b0723239188dd1e7c44b6d28f8
   background-color: #900C3F !important;
 }
 
@@ -120,6 +125,9 @@ th#days_cell {
 
 div.mdl-textfield {
   width: 100%;
+  color: white;
+  text-align: center !important;
+
 }
 
 div#submit_button_container {
@@ -235,6 +243,8 @@ button#submit_button {
 input#name_input.mdl-textfield__input {
   color: black;
   background-color: darkgray;
+
+
 }
 
 input#no_of_shift.mdl-textfield__input {
