@@ -19,12 +19,8 @@ shift_table_string += '</tr></thead>';
 
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
-  for (var j = 0; j < days_of_week.length - 1; j++) {
-    shift_table_string += '<td class="employer_shift_cell">' + 'Testies' + '</td>';
-=======
   for (var j = 0; j < days_of_week.length; j++) {
     shift_table_string += '<td class="shift_cell">' + 'Testies' + '</td>';
->>>>>>> 3b5193ad27525b31c23e527b68561069fd09b61e
   }
   shift_table_string += '</tr>';
 }
