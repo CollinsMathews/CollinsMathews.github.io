@@ -199,8 +199,10 @@ function credChange(cell_id) {
         for (var j = 0; j < shift_times.length; j++) {
             if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
                 sum += 0;
+                document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#FFD131';
             } else {
                 sum += Number(the_value);
+                document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#00843D';
 
             }
         }
@@ -215,8 +217,10 @@ function credChange(cell_id) {
             for (var j = 0; j < shift_times.length; j++) {
                 if ((the_value = document.getElementById(days_of_week[i] + '_' + shift_times[j]).value) == "") {
                     sum += 0;
+                    document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#FFD131';
                 } else {
                     sum += Number(the_value);
+                    document.getElementById(days_of_week[i] + '_' + shift_times[j]).style['background-color'] = '#00843d';
                 }
             }
         }
