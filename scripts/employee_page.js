@@ -37,7 +37,7 @@ function handleClientLoad() {
 
 
 var days_of_week = ['mon', 'tues', 'wed', 'thur', 'fri', 'sat', 'sun'];
-var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM', '5:00PM - 8:00PM', '8:00PM - 11:00PM'];
+var shift_times = ['8:00AM - 11:00AM', '11:00AM - 2:00PM', '2:00PM - 5:00PM'];
 
 document.getElementById('shift_table').innerHTML += '<thead><tr>';
 for (var i = 0; i < days_of_week.length + 1; i++) {
@@ -84,7 +84,7 @@ for (var i = 0; i < shift_times.length; i++) {
         shift_table_string += '<td class="shift_cell" id="shift_cell_' + days_of_week[j] + '_' + shift_times[i] + '">' + '<form action="#" id="credit_input_' + days_of_week[j] + '_' + shift_times[i] + '">\
         <div class="mdl-textfield mdl-js-textfield">\
         <input id="' + days_of_week[j] + '_' + shift_times[i] + '" class="mdl-textfield__input shift_cell" type="text" oninput="credChange(\'' + days_of_week[j] + '_' + shift_times[i] + '\')" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">\
-        <label class="mdl-textfield__label" for="sample2">Credits...</label>\
+        <label class="mdl-textfield__label" for="sample2">Input Credits</label>\
         </div>\
         </form>' + '</td>';
     }
