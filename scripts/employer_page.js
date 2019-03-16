@@ -21,7 +21,7 @@ var shift_id = 0;
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
   for (var j = 0; j < days_of_week.length; j++) {
-    shift_table_string += '<td class="shift_cell" id="shift_cell' + String(shift_id) + '">' + 'Testies' + '</td>';
+    shift_table_string += '<td class="employer_shift_cell" id="shift_cell' + String(shift_id) + '">' + '' + '</td>';
     shift_id += 1;
   }
   shift_table_string += '</tr>';

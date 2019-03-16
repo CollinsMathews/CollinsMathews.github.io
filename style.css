@@ -50,7 +50,7 @@ table#shift_table {
   margin: 0;
   height: 100%;
   background-color:#e6e6e6 !important;
-  border: 10px !important;
+  border-width: 0px !important;
   box-shadow: none !important;  
   font-family: "cabin", sans-serif;
 
@@ -61,30 +61,30 @@ table#employer_shift_table {
   margin: 0;
   height: 100%;
   background-color:#e6e6e6 !important;
-  border: 10px !important;
-  box-shadow: none !important;  
+  border-width: 10px !important;
+  box-shadow: 10px !important;  
+  border-left: thick solid #00843D;
   
 }
 
 
 
 td.shift_cell {
-  border: none !important;
+  border: 0 !important;
 }
 
 td.employer_shift_cell {
-  border: 10px !important;
-  border-color: red !important;  
+  border-width: 1px !important;
+  border-color: #d56900 !important;  
   background-color: #ffd131;
   text-align: center !important; 
+  border-left: thick solid #00843D;
 }
 
 div#table_container {
   padding: 5% 10% 0 10%;
   height: 80vh;
   background-color: #e6e6e6 !important;
-  border: 10px !important;
-  box-shadow: none !important;  
 }
 
 div#employer_table_container {
@@ -114,7 +114,6 @@ div#submit_button_container {
   vertical-align: center !important;
   height: 100px;
   background-color: #e6e6e6;
-  margin: 
   
 }
 
@@ -123,7 +122,7 @@ button#submit_button:hover {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property:  background-color !important ; 
   background-color:#00843D;
-
+  border-color:red;
 }
 
 button#employee_button {
