@@ -21,7 +21,7 @@ var shift_id = 0;
 for (var i = 0; i < shift_times.length; i++) {
   shift_table_string += '<tr id="row_' + (i) + '"><td class="shift_times_cell">' + shift_times[i] + '</td>';
   for (var j = 0; j < days_of_week.length; j++) {
-    shift_table_string += '<td class="shift_cell" id="shift_cell' + String(shift_id) + '">' + 'Testies' + '</td>';
+    shift_table_string += '<td class="employer_shift_cell" id="shift_cell' + String(shift_id) + '">' + '' + '</td>';
     shift_id += 1;
   }
   shift_table_string += '</tr>';
@@ -42,22 +42,26 @@ var config = {
 firebase.initializeApp(config);
 
 var pref_array = [];
+var name_array = [];
 
 function onRetrieve() {
   firebase.database().ref('User').orderByKey().on("child_added", function (user_shift_data_object) {
     console.log(user_shift_data_object.val());
       var employee_shift_pref = user_shift_data_object.val();
-      var templist = [];
-      for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
-        for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
+      for (var j = 0; j < employee_shift_pref.no_of_shift; j++) {
+        var templist = [];
+        for (var i = 0; i < days_of_week.length * shift_times.length; i++) {
           templist.push(Number(employee_shift_pref.shift_data[i].credits));
         }
+        pref_array.push(templist);
+        name_array.push(employee_shift_pref.user);
       }
-      pref_array.push(templist);
-
       MunkresAlgorithm(pref_array);
+      displayShifts();
   });
 }
+
+
 
 function displayShifts() {
   var name_array = ["Chang", "Chang", "Chang", "Chang", "Chang", "Chang", "Chang",
@@ -71,8 +75,11 @@ function displayShifts() {
   for (var i = 0; i < 28; i++) {
     index = shift_assignments[i];
     console.log("shift_cell" + String(index[1]));
-    document.getElementById("shift_cell" + String(index[1])).innerHTML = name_array[index[0]] + " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
-    final_shifts[index[1]] = index[0];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    var cell = document.getElementById("shift_cell" + String(index[1]))
+    var name = name_array[index[0]]
+    var weighting = " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
+    cell.innerHTML = name + weighting;           
+    final_shifts[index[1]] = index[0]    ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
   }
 }
 
