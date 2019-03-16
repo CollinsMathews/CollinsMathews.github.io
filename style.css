@@ -90,15 +90,17 @@ button#submit_button:hover {
 button#employee_button {
 
   background-color: #ffd131;
+  font-family: "cabin", sans-serif;
 
 }
 
 button#employer_button {
   background-color: #ffd131;
+  font-family: "cabin", sans-serif;
 }
 
 body#main_page_body {
-  background-color: #e6e6e6;
+  background-color: #373737;
   text-align: center;
   
 }
@@ -107,11 +109,33 @@ div#main_page_button_wrapper {
   margin: 200px auto 10px;
   display: inline-block;
   vertical-align: center;
+  background-color: #373737;
 }
 
 h1 {
   color: #ffd131;
+  font-family: "cabin", sans-serif;
+  font-size: 10em;
 }
+
+
+button#prefer_io_button {
+  color: #373737;
+  font-family: "cabin", sans-serif !important;
+  font-size: 2em !important;
+  border: none;
+  background-color: inherit;
+  padding: 0;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button.prefer_io_button:hover {
+  background-color: #eee;
+}
+
+
 
 
 button#submit_button {
