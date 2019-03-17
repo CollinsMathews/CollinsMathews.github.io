@@ -37,7 +37,7 @@ td.heat5 {
 }
 
 td.shift_cell:hover {
-  background-color: #ff5a31;
+  background-color: #00843d;
 }
 
 p.creds_remaining {
@@ -201,7 +201,7 @@ h4 {
 
 
 button#prefer_io_button {
-  color: #c29700;
+  color: #373737;
   font-family: "cabin", sans-serif !important;
   font-size: 2em !important;
   background-color: inherit;
@@ -251,8 +251,10 @@ button#submit_button {
 
 .mdl-textfield__input {
   color: black;
+  background-color: darkgray;
   text-align: center !important;
   font-size: 30px !important;
+
 }
 
 .mdl-textfield__label {
@@ -275,7 +277,6 @@ button#submit_button {
 
 input#no_of_shift.mdl-textfield__input {
   color: black;
-  background-color: darkgray;
 }
 
 .g-signin2 {
