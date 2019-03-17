@@ -123,6 +123,13 @@ th#days_cell {
 }
 
 div.mdl-textfield {
+  width: 100%;
+  color: white;
+  text-align: center !important;
+  font-size: 34px !important;
+}
+
+div#name_input_div {
     position: relative;
     font-size: 16px;
     display: inline-block;
@@ -133,6 +140,7 @@ div.mdl-textfield {
     padding: 20px 0;
     z-index: 2;
 }
+
 
 div.mdl-textfield.shift_cell {
   width: 100%;

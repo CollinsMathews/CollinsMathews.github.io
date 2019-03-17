@@ -47,7 +47,7 @@ for (var i = 0; i < days_of_week.length + 1; i++) {
         } else {
             shift_table_string += '<th id="days_cell" class="mdl-data-table__cell--non-numeric">' +
                 '<form action="#">\
-        <div class="mdl-textfield mdl-js-textfield">\
+        <div id="name_input_div" class="mdl-textfield mdl-js-textfield">\
           <input class="mdl-textfield__input" type="text" id="name_input">\
           <label class="mdl-textfield__label" for="name_input">' + 'Name...' + '</label>\
         </div>\
