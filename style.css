@@ -23,18 +23,22 @@ td.heat1 {
 
 td.heat2 {
   background-color: #ffd131 !important;
+  font-size: 30px;
 }
 
 td.heat3 {
   background-color: #ff7d31 !important;
+  font-size: 30px;
 }
 
 td.heat4 {
   background-color: #ff5a31 !important;
+  font-size: 30px;
 }
 
 td.heat5 {
   background-color: #97382b !important;
+  font-size: 30px;
 }
 
 td.shift_cell:hover {
