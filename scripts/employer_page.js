@@ -115,7 +115,7 @@ function displayShifts(my_array, name_array) {
     console.log("shift_cell" + String(index[1]));
     var cell = document.getElementById("shift_cell" + String(index[1]))
     var name = name_array[index[0]]
-    var weighting = " (" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
+    var weighting = " <br\>(" + String(Math.round(my_array[index[0]][index[1]] * 100) / 100) + ")";
     cell.innerHTML = name + weighting;
   }
 }
